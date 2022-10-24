@@ -1,5 +1,4 @@
 import React from "react";
-import sampleImage from "./../../assets/AMS.png";
 import "./style.scss";
 
 const ProductRow = ({ image, name, description, price }) => {

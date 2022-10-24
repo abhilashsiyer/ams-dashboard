@@ -1,6 +1,6 @@
 import ProductList from "../../components/ProductList";
 
-const Products = () => {
+const Results = () => {
   return (
     <div>
       <h2>Products page</h2>
@@ -9,4 +9,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Results;
