@@ -18,7 +18,6 @@ class ProductList extends Component {
 
   componentDidMount() {
     commerce.products.list().then((result) => {
-      console.log(result);
       this.setState({ products: result.data });
     });
   }

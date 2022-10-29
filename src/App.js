@@ -4,21 +4,19 @@ import {connect} from "react-redux";
 import Registration from "./pages/Registration";
 import MainLayout from "./layouts/MainLayout";
 import { Routes, Route, Navigate } from "react-router-dom";
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import Login from "./pages/Login";
 import { auth, handleUserProfile } from "./firebase/utils";
 import Results from "./pages/Results";
-import {setCurrentUser} from "./redux/User/user.actions"
+import {setCurrentUser} from "./redux/User/user.actions";
+import WithAuth from "./hoc/withAuth";
 
 
-class App extends Component {
+const App = props => {
+  const { setCurrentUser, currentUser } = props;
 
-
-  authListener = null;
-
-  componentDidMount() {
-    const {setCurrentUser} = this.props;
-    this.authListener = auth.onAuthStateChanged(async (userAuth) => {
+  useEffect(()=>{
+    const authListener = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await handleUserProfile(userAuth);
         userRef.onSnapshot((snapshot) => {
@@ -31,14 +29,12 @@ class App extends Component {
         setCurrentUser(null);
       }
     });
-  }
 
-  componentWillUnmount() {
-    this.authListener();
-  }
+    return (()=>{
+      authListener();
+    })
+  },[]);
 
-  render() {
-    const { currentUser } = this.props;
     return (
       <div className="App">
         <Routes>
@@ -58,16 +54,14 @@ class App extends Component {
               </MainLayout>
             }
           />
-           <Route
+          <Route
             path="/results"
             element={
-              currentUser ? (
-                <Navigate to="/" />
-              ) : (
-                <MainLayout>
+              <WithAuth>
+              <MainLayout>
                   <Results />
                 </MainLayout>
-              )
+               </WithAuth> 
             }
           />
           <Route
@@ -86,7 +80,6 @@ class App extends Component {
       </div>
     );
   }
-}
 
 const mapStateToProps = ({user}) =>({
   currentUser: user.currentUser 
