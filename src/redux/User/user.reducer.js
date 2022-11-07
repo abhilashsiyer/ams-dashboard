@@ -32,9 +32,9 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case userTypes.RESET_AUTH_FORMS:
       return {
         ...state,
-  signInSuccess: false,
-  signUpError: [],
-  signUpSuccess: false
+        signInSuccess: false,
+        signUpError: [],
+        signUpSuccess: false,
       };
     default:
       return state;
