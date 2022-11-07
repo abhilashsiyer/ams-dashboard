@@ -1,13 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import "./style.scss";
 import Button from "../Forms/Button";
-import { auth, signInWithGoogle } from "../../firebase/utils";
 import AuthWrapper from "../AuthWrapper";
 import FormInput from "../Forms/FormInput";
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
+import {useDispatch} from 'react-redux';
+import {signInUser, signInWithGoogle, resetAllAuthForms} from './../../redux/User/user.actions';
+
+import { useSelector } from "react-redux";
+
+const mapState = ({user}) =>({
+  signInSuccess: user.signInSuccess 
+ });
 
 const SignIn = props => {
+  const { signInSuccess } = useSelector(mapState);
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   let navigate = useNavigate();
@@ -17,20 +26,24 @@ const SignIn = props => {
     setPassword('');
   };
 
+  useEffect(() => {
+    if (signInSuccess) {
+      resetForm();
+      dispatch(resetAllAuthForms());
+      navigate("/");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [signInSuccess]);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    try{
-      await auth.signInWithEmailAndPassword(email,password) ;
-      resetForm();
-      navigate('/');
-      
-    }
-    catch(err){
-      console.log(err)
-    }
+    dispatch(signInUser({email,password}));
   };
+
+  const handleGoogleSignIn = () => {
+    dispatch(signInWithGoogle());
+  }
 
   const configAuthWrapper = {
     headline: 'LogIn'
@@ -63,7 +76,7 @@ const SignIn = props => {
 
           <div className="socialSignin">
             <div className="row">
-              <Button onClick={signInWithGoogle}>
+              <Button onClick={handleGoogleSignIn}>
                 Sign in with Google
               </Button>
             </div>

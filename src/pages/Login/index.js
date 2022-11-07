@@ -2,7 +2,7 @@ import React from "react";
 import SignIn from "../../components/SignIn";
 import "./style.scss";
 
-const Login = (props) => {
+const Login = () => {
   return <SignIn></SignIn>;
 };
 

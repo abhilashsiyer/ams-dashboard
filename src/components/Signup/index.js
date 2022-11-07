@@ -1,15 +1,23 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import AuthWrapper from './../AuthWrapper';
 import FormInput from "../Forms/FormInput";
 import Button from "../Forms/Button";
-import { auth, handleUserProfile } from '../../firebase/utils';
 import './../Signup/style.scss';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
+import {useDispatch} from 'react-redux';
+import {signUpUser, resetAllAuthForms} from './../../redux/User/user.actions';
+import { useSelector } from "react-redux";
 
+const mapState = ({user}) =>({
+  signUpSuccess: user.signUpSuccess,
+  signUpError: user.signUpError,
+ });
 
 const Signup = props => {
+  const { signUpSuccess, signUpError} = useSelector(mapState);
   const [displayName, setDisplayName] = useState('');
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -24,25 +32,24 @@ const Signup = props => {
     setErrors([]);
   };
 
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    if (password !== confirmPassword){
-      const err = ['Password dont match'];
-      setErrors(err);
-      return;
-    }
-
-    try{
-
-      const { user} = await auth.createUserWithEmailAndPassword(email,password) ;
-      await handleUserProfile(user, {displayName});
+  useEffect(() => {
+    if (signUpSuccess) {
       reset(); 
+      dispatch(resetAllAuthForms());
       navigate('/');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [signUpSuccess]);
 
+  useEffect(() => {
+    if (Array.isArray(signUpError) && signUpError.length>0) {
+      setErrors(signUpError)
     }
-    catch(err){
-      console.log(err)
-    }
+  }, [signUpError]);
+
+  const handleFormSubmit =  (e) => {
+    e.preventDefault();
+    dispatch(signUpUser({displayName,email,password, confirmPassword}));
   }
 
   const configAuthWrapper = {
