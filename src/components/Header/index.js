@@ -2,17 +2,23 @@ import "./style.scss";
 
 import AMSLogo from "./../../assets/AMS.png";
 import { Link } from "react-router-dom";
-import { auth } from "./../../firebase/utils";
 import Button from "../Forms/Button";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { signOutUserStart } from './../../redux/User/user.actions';
 
 const mapState = ({user}) =>({
   currentUser: user.currentUser 
  });
 
-const Header = () => {
+const Header = props => {
+  const dispatch = useDispatch();
   const { currentUser } = useSelector(mapState);
+
+  const signOut = () => {
+    dispatch(signOutUserStart());
+  };
+
   return (
     <header className="header">
       <div className="wrap">
@@ -27,7 +33,7 @@ const Header = () => {
               <Button
                 onClick={() => {
                   console.log("Logout clicked");
-                  auth.signOut();
+                  signOut();
                 }}>
                 Logout
               </Button>

@@ -6,16 +6,16 @@ import './../Signup/style.scss';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 import {useDispatch} from 'react-redux';
-import {signUpUser, resetAllAuthForms} from './../../redux/User/user.actions';
+import {signUpUserStart} from './../../redux/User/user.actions';
 import { useSelector } from "react-redux";
 
 const mapState = ({user}) =>({
-  signUpSuccess: user.signUpSuccess,
-  signUpError: user.signUpError,
+  currentUser: user.currentUser,
+  userErr: user.userErr,
  });
 
 const Signup = props => {
-  const { signUpSuccess, signUpError} = useSelector(mapState);
+  const { currentUser, userErr} = useSelector(mapState);
   const [displayName, setDisplayName] = useState('');
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
@@ -33,23 +33,22 @@ const Signup = props => {
   };
 
   useEffect(() => {
-    if (signUpSuccess) {
+    if (currentUser) {
       reset(); 
-      dispatch(resetAllAuthForms());
       navigate('/');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [signUpSuccess]);
+  }, [currentUser]);
 
   useEffect(() => {
-    if (Array.isArray(signUpError) && signUpError.length>0) {
-      setErrors(signUpError)
+    if (Array.isArray(userErr) && userErr.length>0) {
+      setErrors(userErr)
     }
-  }, [signUpError]);
+  }, [userErr]);
 
   const handleFormSubmit =  (e) => {
     e.preventDefault();
-    dispatch(signUpUser({displayName,email,password, confirmPassword}));
+    dispatch(signUpUserStart({displayName,email,password, confirmPassword}));
   }
 
   const configAuthWrapper = {

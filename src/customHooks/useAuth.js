@@ -14,7 +14,7 @@ const useAuth = props => {
     if (!currentUser) {
       navigate('/login')
     }
-
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser]);
 
   return currentUser;

@@ -6,35 +6,18 @@ import MainLayout from "./layouts/MainLayout";
 import { Routes, Route } from "react-router-dom";
 import React, { useEffect } from "react";
 import Login from "./pages/Login";
-import { auth, handleUserProfile } from "./firebase/utils";
 import Results from "./pages/Results";
-import {setCurrentUser} from "./redux/User/user.actions";
 import WithAuth from "./hoc/withAuth";
+import { checkUserSession } from './redux/User/user.actions';
 
 
 const App = props => {
   const dispatch = useDispatch();
 
-  useEffect(()=>{
-    const authListener = auth.onAuthStateChanged(async (userAuth) => {
-      if (userAuth) {
-        const userRef = await handleUserProfile(userAuth);
-        userRef.onSnapshot((snapshot) => {
-          dispatch(setCurrentUser({
-            id: snapshot.id,
-          ...snapshot.data(),
-          }));
-        });
-      } else {
-        dispatch(setCurrentUser(userAuth));
-      }
-    });
-
-    return (()=>{
-      authListener();
-    })
+  useEffect(() => {
+    dispatch(checkUserSession());
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
+  }, []);
 
     return (
       <div className="App">

@@ -6,16 +6,16 @@ import FormInput from "../Forms/FormInput";
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 import {useDispatch} from 'react-redux';
-import {signInUser, signInWithGoogle, resetAllAuthForms} from './../../redux/User/user.actions';
+import {emailSignInStart, googleSignInStart} from './../../redux/User/user.actions';
 
 import { useSelector } from "react-redux";
 
 const mapState = ({user}) =>({
-  signInSuccess: user.signInSuccess 
+  currentUser: user.currentUser 
  });
 
 const SignIn = props => {
-  const { signInSuccess } = useSelector(mapState);
+  const { currentUser } = useSelector(mapState);
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -27,22 +27,21 @@ const SignIn = props => {
   };
 
   useEffect(() => {
-    if (signInSuccess) {
+    if (currentUser) {
       resetForm();
-      dispatch(resetAllAuthForms());
       navigate("/");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [signInSuccess]);
+  }, [currentUser]);
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(signInUser({email,password}));
+    dispatch(emailSignInStart({ email, password }));
   };
 
   const handleGoogleSignIn = () => {
-    dispatch(signInWithGoogle());
+    dispatch(googleSignInStart());
   }
 
   const configAuthWrapper = {
