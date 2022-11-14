@@ -80,7 +80,7 @@ export function* signUpUser({
     const additionalData = { displayName };
     yield getSnapshotFromUserAuth(user, additionalData);
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 }
 

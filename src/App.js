@@ -6,7 +6,8 @@ import MainLayout from "./layouts/MainLayout";
 import { Routes, Route } from "react-router-dom";
 import React, { useEffect } from "react";
 import Login from "./pages/Login";
-import Results from "./pages/Results";
+import Search from "./pages/Search";
+import ResultDetails from "./pages/ResultDetails";
 import WithAuth from "./hoc/withAuth";
 import { checkUserSession } from './redux/User/user.actions';
 
@@ -39,13 +40,19 @@ const App = props => {
             }
           />
           <Route
-            path="/results"
+            path="/searchresults"
             element={
-              <WithAuth>
               <MainLayout>
-                  <Results />
-                </MainLayout>
-               </WithAuth> 
+                  <Search />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/testResult/:resultID"
+            element={
+              <MainLayout>
+                  <ResultDetails />
+              </MainLayout>
             }
           />
           <Route

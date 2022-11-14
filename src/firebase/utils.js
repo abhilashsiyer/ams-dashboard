@@ -22,7 +22,7 @@ export const handleUserProfile = async ({userAuth, additionalData}) => {
   if (!snapshot.exists) {
     const { displayName, email } = userAuth;
     const appKey = generateUUID();
-    console.log(`appKey${appKey}`);
+    // console.log(`appKey${appKey}`);
 
     try {
       await userRef.set({
@@ -31,11 +31,11 @@ export const handleUserProfile = async ({userAuth, additionalData}) => {
         appKey,
       });
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   }
 
-  console.log(userRef, 1)
+  // console.log(userRef, 1)
   return userRef;
 };
 
