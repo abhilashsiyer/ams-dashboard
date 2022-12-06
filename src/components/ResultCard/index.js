@@ -4,10 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchResultStart } from './../../redux/Results/results.actions';
 import './../ResultCard/style.scss';
 
-// const mapState = state => ({
-//   result: state.resultsData.result
-// });
-
 const mapState = ({resultsData}) =>({
   result: resultsData.result 
  });
@@ -17,7 +13,7 @@ const ResultCard = () => {
   const { resultID } = useParams();
   const { result } = useSelector(mapState);
   const {
-    testGif, testName, testResult
+    testCaseName, logcatSignedUrl, videoSignedUrl, testResult
   } = result;
 
   useEffect(() => {
@@ -30,13 +26,14 @@ const ResultCard = () => {
   return (
     <div className="productCard">
       <div className="hero">
-        <img src={testGif} alt={testName}/>
+        {/* <h2>{testCaseName}</h2> */}
+        {/* <img src={testGif} alt={testName}/> */}
       </div>
       <div className="productDetails">
         <ul>
           <li>
             <h1>
-              {testName}
+              {testCaseName}
             </h1>
           </li>
           <li>

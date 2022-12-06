@@ -19,9 +19,11 @@ const TestResults = () => {
      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (!Array.isArray(results)) return null;
-  if (results.length < 1) {
-    // console.log(results)
+  const {testCasesList} = results;
+  console.log('** testCasesList in components',testCasesList)
+
+  if (!Array.isArray(testCasesList)) return null;
+  if (testCasesList.length < 1) {
     return (
       <div className="results">
         <p>
@@ -39,12 +41,12 @@ const TestResults = () => {
       </h1>
       <div className="testResults">
 
-      {results.map((result) => {
-          const { documentID, testGif, testName, testResult } = result;
-          if (!testResult || !testName || !testGif) return null;
+      {testCasesList.map((testCase) => {
+          const { testResult, logcatSignedUrl, testCaseName, videoSignedUrl } = testCase;
+          if (!testResult || !logcatSignedUrl || !testCaseName) return null;
           return(
-            <Result key = {documentID}
-            {...result}
+            <Result key = {testCaseName}
+            {...testCase}
           />
           )
 

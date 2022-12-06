@@ -2,14 +2,15 @@ import React from "react";
 import Button from "../../Forms/Button";
 import { Link } from "react-router-dom";
 
-const Result = ({ documentID, testGif, testName, testResult }) => {
-  if (!testGif || !testName || !testResult) return null;
+const Result = ({ testResult, logcatSignedUrl, testCaseName, videoSignedUrl  }) => {
+  // if (!testGif || !testName || !testResult) return null;
 
   return (
     <div className="result">
       <div className="thumb">
-        <Link to={`/testResult/${documentID}`}>
-          <img src={testGif} alt={testName} />
+        <Link to={`/testResult/${testCaseName}`}>
+          <h2>{testCaseName}</h2>
+          {/* <img src={testGif} alt={testName} /> */}
         </Link>
       </div>
 
@@ -17,8 +18,8 @@ const Result = ({ documentID, testGif, testName, testResult }) => {
         <ul>
           <li>
             <span className="name">
-              <Link to={`/testResult/${documentID}`}>
-                <Button>{testName}</Button>
+              <Link to={`/testResult/${testCaseName}`}>
+                <Button>{testResult}</Button>
               </Link>
             </span>
           </li>
