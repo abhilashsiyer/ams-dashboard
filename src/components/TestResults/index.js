@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchResultsStart } from './../../redux/Results/results.actions';
 import Result from './Result';
@@ -11,19 +12,20 @@ const mapState = ({ resultsData }) => ({
 const TestResults = () => {
   const dispatch = useDispatch();
   const { results } = useSelector(mapState);
+  const {matriceId} = useParams();
 
   useEffect(() => {
     dispatch(
-        fetchResultsStart()
+        fetchResultsStart(matriceId)
     )
      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const {testCasesList} = results;
-  console.log('** testCasesList in components',testCasesList)
+  const {testCases} = results;
+  console.log('** testCasesList in components',results)
 
-  if (!Array.isArray(testCasesList)) return null;
-  if (testCasesList.length < 1) {
+  if (!Array.isArray(testCases)) return null;
+  if (testCases.length < 1) {
     return (
       <div className="results">
         <p>
@@ -41,27 +43,16 @@ const TestResults = () => {
       </h1>
       <div className="testResults">
 
-      {testCasesList.map((testCase) => {
-          const { testResult, logcatSignedUrl, testCaseName, videoSignedUrl } = testCase;
-          if (!testResult || !logcatSignedUrl || !testCaseName) return null;
+      {testCases.map((testCase) => {
+
+          const { testCaseName, deviceTestResults } = testCase;
+          if (!testCaseName || !deviceTestResults) return null;
+          const currentResult = {testCaseName,deviceTestResults,matriceId};
           return(
             <Result key = {testCaseName}
-            {...testCase}
+            {...currentResult}
           />
           )
-
-          // "https://media1.giphy.com/media/MeJgB3yMMwIaHmKD4z/giphy.gif"
-          
-
-          // const configResult = {
-          //   testGif,
-          //   testName,
-          //   testResult
-          // };
-
-          // return (
-          //   <Result {...configResult} />
-          // );
         })}
       
       </div>

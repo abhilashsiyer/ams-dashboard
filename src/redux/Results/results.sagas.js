@@ -4,9 +4,9 @@ import { setResult, setResults } from './results.actions';
 import { takeLatest, put, all, call } from 'redux-saga/effects';
 
 
-export function* fetchResults() {
+export function* fetchResults({ payload }) {
     try {
-      const results = yield handleFetchResults();
+      const results = yield handleFetchResults(payload);
       yield put(
         setResults(results)
       );

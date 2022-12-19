@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import React, { useEffect } from "react";
 import Login from "./pages/Login";
 import Search from "./pages/Search";
+import Matrices from "./pages/Matrices";
 import ResultDetails from "./pages/ResultDetails";
 import WithAuth from "./hoc/withAuth";
 import { checkUserSession } from './redux/User/user.actions';
@@ -41,6 +42,22 @@ const App = props => {
           />
           <Route
             path="/searchresults"
+            element={
+              <MainLayout>
+                  <Search />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/matrices"
+            element={
+              <MainLayout>
+                  <Matrices />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/matrices/:matriceId"
             element={
               <MainLayout>
                   <Search />

@@ -2,13 +2,14 @@ import React from "react";
 import Button from "../../Forms/Button";
 import { Link } from "react-router-dom";
 
-const Result = ({ testCaseName, deviceTestResults, matriceId }) => {
+const MatriceResult = ({ matriceId, clientInfo  }) => {
+  // if (!testGif || !testName || !testResult) return null;
 
   return (
     <div className="result">
       <div className="thumb">
-        <Link to={`/matrices/${matriceId}/${testCaseName}`}>
-          <h2>{testCaseName}</h2>
+        <Link to={`/matrices/${matriceId}`}>
+          <h2>{matriceId}</h2>
           {/* <img src={testGif} alt={testName} /> */}
         </Link>
       </div>
@@ -17,13 +18,9 @@ const Result = ({ testCaseName, deviceTestResults, matriceId }) => {
         <ul>
           <li>
             <span className="name">
-              {deviceTestResults.map((deviceResult) => {
-                const { deviceName, result } = deviceResult[0];
-                return <h3 key = {deviceName}>{`${deviceName}`} {"=>"} {result}</h3>;
-              })}
-              {/* <Link to={`/testResult/${testCaseName}`}>
-                <Button>{testResult}</Button>
-              </Link> */}
+              <Link to={`/matrices/${matriceId}`}>
+                <h3>{clientInfo}</h3>
+              </Link>
             </span>
           </li>
           {/* <li key="{name}">
@@ -37,4 +34,4 @@ const Result = ({ testCaseName, deviceTestResults, matriceId }) => {
   );
 };
 
-export default Result;
+export default MatriceResult;

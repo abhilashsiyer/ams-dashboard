@@ -1,7 +1,8 @@
 import resultsTypes from './results.types';
 
-export const fetchResultsStart = () => ({
-    type: resultsTypes.FETCH_RESULTS_START
+export const fetchResultsStart = matriceId => ({
+    type: resultsTypes.FETCH_RESULTS_START,
+    payload: matriceId
   });
   
   export const setResults = results => ({

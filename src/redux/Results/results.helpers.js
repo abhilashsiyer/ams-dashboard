@@ -1,30 +1,17 @@
 // import { firestore } from './../../firebase/utils';
 import { axiosClient } from './../../services/utils'
 
-export const handleFetchResults = () => {
+export const handleFetchResults = (matriceId) => {
     return new Promise((resolve, reject) => {
+      console.log("matriceId",matriceId)
 
-      axiosClient.get('api/testResults').then((response)=>{
+      const payload = {testMatrixId:"matrix-12b4vnqxiectv"}
+
+      axiosClient.post('api/testResults',payload).then((response)=>{
         resolve(response.data)
       }).catch(err => {
         reject(err);
       })
-
-      // firestore
-      //   .collection('results')
-      //   .get()
-      //   .then(snapshot => {
-      //     const resultsArray = snapshot.docs.map(doc => {
-      //       return {
-      //         ...doc.data(),
-      //         documentID: doc.id
-      //       }
-      //     });
-      //     resolve(resultsArray);
-      //   })
-      //   .catch(err => {
-      //     reject(err);
-      //   })
     })
   }
   export const handleFetchResult = (resultID) => {
