@@ -23,6 +23,9 @@ export function* fetchResults({ payload }) {
   export function* fetchResult({ payload }) {
     try {
       const result = yield handleFetchResult(payload);
+      console.log('result', result);
+      console.log('payload', payload);
+      
       yield put(
         setResult(result)
       );

@@ -10,7 +10,7 @@ export const fetchResultsStart = matriceId => ({
     payload: results
   });
 
-  export const fetchResultStart = resultID => ({
+  export const fetchResultStart = (resultID) => ({
     type: resultsTypes.FETCH_RESULT_START,
     payload: resultID
   });

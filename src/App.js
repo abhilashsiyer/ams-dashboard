@@ -41,14 +41,6 @@ const App = props => {
             }
           />
           <Route
-            path="/searchresults"
-            element={
-              <MainLayout>
-                  <Search />
-              </MainLayout>
-            }
-          />
-          <Route
             path="/matrices"
             element={
               <MainLayout>
@@ -65,7 +57,7 @@ const App = props => {
             }
           />
           <Route
-            path="/testResult/:resultID"
+            path="/matrices/:matriceId/:testCaseName"
             element={
               <MainLayout>
                   <ResultDetails />

@@ -10,18 +10,18 @@ const mapState = ({resultsData}) =>({
 
 const ResultCard = () => {
   const dispatch = useDispatch();
-  const { resultID } = useParams();
+  const { matriceId, testCaseName } = useParams();
   const { result } = useSelector(mapState);
-  const {
-    testCaseName, logcatSignedUrl, videoSignedUrl, testResult
-  } = result;
 
   useEffect(() => {
     dispatch(
-      fetchResultStart(resultID)
+      fetchResultStart({testCaseName, matriceId})
     )
      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+    console.log('** Device Results',result);
+  const { testCasesList } = result;
+
 
   return (
     <div className="productCard">
@@ -32,16 +32,17 @@ const ResultCard = () => {
       <div className="productDetails">
         <ul>
           <li>
-            <h1>
-              {testCaseName}
-            </h1>
+            <h1>{testCaseName}</h1>
           </li>
           <li>
-            <h2>
-              {testResult}
-            </h2>
+            {testCasesList.map((testCase) => {
+              const { testCaseName, deviceName,logcatSignedUrl,videoSignedUrl,testResult } = testCase;
+              if (!testCaseName || !deviceName) return null;
+
+              return <h3>{deviceName} {'=>'} {testResult}</h3>;
+            })}
           </li>
-          </ul>
+        </ul>
       </div>
     </div>
   );
