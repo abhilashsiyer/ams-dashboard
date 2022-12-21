@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchResultStart } from './../../redux/Results/results.actions';
+import { fetchResultStart, fetchResultsStart } from './../../redux/Results/results.actions';
 import './../ResultCard/style.scss';
 
 const mapState = ({resultsData}) =>({
@@ -12,17 +12,28 @@ const ResultCard = () => {
   const dispatch = useDispatch();
   const { matriceId, testCaseName } = useParams();
   const { result } = useSelector(mapState);
+  const fetchResult = {testCaseName,matriceId};
 
   useEffect(() => {
     dispatch(
-      fetchResultStart({testCaseName, matriceId})
+      fetchResultStart(fetchResult)
     )
      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-    console.log('** Device Results',result);
+
+  console.log('** Device Results',result);
   const { testCasesList } = result;
 
-
+  if (!Array.isArray(testCasesList)) return null;
+  if (testCasesList.length < 1) {
+    return (
+      <div className="results">
+        <p>
+          No search results.
+        </p>
+      </div>
+    );
+  }
   return (
     <div className="productCard">
       <div className="hero">
@@ -39,7 +50,7 @@ const ResultCard = () => {
               const { testCaseName, deviceName,logcatSignedUrl,videoSignedUrl,testResult } = testCase;
               if (!testCaseName || !deviceName) return null;
 
-              return <h3>{deviceName} {'=>'} {testResult}</h3>;
+              return <h3 key = {deviceName}>{deviceName} {'=>'} {testResult}</h3>;
             })}
           </li>
         </ul>

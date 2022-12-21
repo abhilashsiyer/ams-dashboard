@@ -4,6 +4,8 @@ import { axiosClient } from './../../services/utils'
 export const handleFetchResults = (matriceId) => {
     return new Promise((resolve, reject) => {
   
+      console.log('handleFetchResults',handleFetchResults);
+      
       const payload = {testMatrixId:"matrix-12b4vnqxiectv"}
 
       axiosClient.post('api/testResults',payload).then((response)=>{
@@ -13,10 +15,10 @@ export const handleFetchResults = (matriceId) => {
       })
     })
   }
-  export const handleFetchResult = (resultID) => {
+  export const handleFetchResult = (fetchResult) => {
     return new Promise((resolve, reject) => {
-
-      const payload = {testMatrixId:resultID.matriceId, testCaseName: resultID.testCaseName}
+      console.log('fetchResult',fetchResult)
+      const payload = {testMatrixId:fetchResult.matriceId, testCaseName: fetchResult.testCaseName}
 
       axiosClient.post(`api/testResultsForTestCase`, payload).then((response)=>{
         console.log('** helper', response.data)
