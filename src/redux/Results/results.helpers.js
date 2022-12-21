@@ -5,8 +5,9 @@ export const handleFetchResults = (matriceId) => {
     return new Promise((resolve, reject) => {
   
       console.log('handleFetchResults',handleFetchResults);
+      //"matrix-12b4vnqxiectv"
       
-      const payload = {testMatrixId:"matrix-12b4vnqxiectv"}
+      const payload = {testMatrixId:matriceId}
 
       axiosClient.post('api/testResults',payload).then((response)=>{
         resolve(response.data)

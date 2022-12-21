@@ -17,11 +17,11 @@ const MatriceResult = ({ matriceId, clientInfo  }) => {
       <div className="details">
         <ul>
           <li>
-            <span className="name">
+            {/* <span className="name">
               <Link to={`/matrices/${matriceId}`}>
                 <h3>{clientInfo}</h3>
               </Link>
-            </span>
+            </span> */}
           </li>
           {/* <li key="{name}">
             <span className="price">
