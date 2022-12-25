@@ -14,6 +14,9 @@ const Directory = (props) => {
           }}></div>
         <Link to={"/registration"}>Get Started</Link>
       </div>
+      <div className="wrap">
+        <Link to={"/matrices"}>Matrices</Link>
+      </div>
     </div>
   );
 };

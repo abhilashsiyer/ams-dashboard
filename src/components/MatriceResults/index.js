@@ -21,7 +21,6 @@ const MatriceResults = () => {
 
   const {matrices} = results;
   console.log('** matrices in components',matrices)
-
   if (!Array.isArray(matrices)) return null;
   if (matrices.length < 1) {
     return (

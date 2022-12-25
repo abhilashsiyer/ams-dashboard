@@ -12,7 +12,6 @@ import ResultDetails from "./pages/ResultDetails";
 import Teams from "./pages/Teams";
 import WithAuth from "./hoc/withAuth";
 import { checkUserSession } from './redux/User/user.actions';
-import { useSelector } from 'react-redux';
 
 const mapState = ({ user }) => ({
   currentUser: user.currentUser
@@ -48,7 +47,7 @@ const App = props => {
           <Route
             path="/matrices"
             element={
-              <WithAuth>
+              <WithAuth path="/matrices">
                 <MainLayout>
                   <Matrices />
                 </MainLayout>
@@ -58,25 +57,31 @@ const App = props => {
           <Route
             path="/teams"
             element={
-              <MainLayout>
-                <Teams />
-              </MainLayout>
+              <WithAuth path="/teams">
+                <MainLayout>
+                  <Teams />
+                </MainLayout>
+              </WithAuth>
             }
           />
           <Route
             path="/matrices/:matriceId"
             element={
-              <MainLayout>
-                <Search />
-              </MainLayout>
+              <WithAuth path="/matrices/">
+                <MainLayout>
+                  <Search />
+                </MainLayout>
+              </WithAuth>
             }
           />
           <Route
             path="/matrices/:matriceId/:testCaseName"
             element={
-              <MainLayout>
-                <ResultDetails />
-              </MainLayout>
+              <WithAuth path="/matrices/">
+                <MainLayout>
+                  <ResultDetails />
+                </MainLayout>
+              </WithAuth>
             }
           />
           <Route

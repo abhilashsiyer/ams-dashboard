@@ -9,9 +9,11 @@ const mapState = ({ user }) => ({
 const useAuth = props => {
   const { currentUser } = useSelector(mapState);
   let navigate = useNavigate();
+  const path = props.path;
 
   useEffect(() => {
     if (!currentUser) {
+      localStorage.setItem('routeBeforeLogin', path);
       navigate('/login')
     }
      // eslint-disable-next-line react-hooks/exhaustive-deps

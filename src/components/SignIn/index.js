@@ -29,7 +29,16 @@ const SignIn = props => {
   useEffect(() => {
     if (currentUser) {
       resetForm();
-      navigate("/");
+      const pathBeforeLogin = localStorage.getItem('routeBeforeLogin');
+      console.log('pathBeforeLoginIInSignIn', pathBeforeLogin);
+      
+      if (pathBeforeLogin){
+        navigate(pathBeforeLogin);
+      }
+      else {
+        navigate("/teams");
+      }
+      
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser]);

@@ -38,6 +38,7 @@ const Header = props => {
                   console.log("Logout clicked");
                   signOut();
                   navigate("/");
+                  localStorage.setItem('routeBeforeLogin', '/');
                 }}>
                 Logout
               </Button>
