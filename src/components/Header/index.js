@@ -6,6 +6,8 @@ import Button from "../Forms/Button";
 
 import { useSelector, useDispatch } from "react-redux";
 import { signOutUserStart } from './../../redux/User/user.actions';
+import { useNavigate } from 'react-router';
+
 
 const mapState = ({user}) =>({
   currentUser: user.currentUser 
@@ -14,6 +16,7 @@ const mapState = ({user}) =>({
 const Header = props => {
   const dispatch = useDispatch();
   const { currentUser } = useSelector(mapState);
+  let navigate = useNavigate();
 
   const signOut = () => {
     dispatch(signOutUserStart());
@@ -34,6 +37,7 @@ const Header = props => {
                 onClick={() => {
                   console.log("Logout clicked");
                   signOut();
+                  navigate("/");
                 }}>
                 Logout
               </Button>

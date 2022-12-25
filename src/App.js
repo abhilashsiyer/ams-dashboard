@@ -9,13 +9,18 @@ import Login from "./pages/Login";
 import Search from "./pages/Search";
 import Matrices from "./pages/Matrices";
 import ResultDetails from "./pages/ResultDetails";
+import Teams from "./pages/Teams";
 import WithAuth from "./hoc/withAuth";
 import { checkUserSession } from './redux/User/user.actions';
+import { useSelector } from 'react-redux';
 
+const mapState = ({ user }) => ({
+  currentUser: user.currentUser
+});
 
 const App = props => {
   const dispatch = useDispatch();
-
+  
   useEffect(() => {
     dispatch(checkUserSession());
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -43,8 +48,18 @@ const App = props => {
           <Route
             path="/matrices"
             element={
-              <MainLayout>
+              <WithAuth>
+                <MainLayout>
                   <Matrices />
+                </MainLayout>
+              </WithAuth>
+            }
+          />
+          <Route
+            path="/teams"
+            element={
+              <MainLayout>
+                <Teams />
               </MainLayout>
             }
           />
@@ -52,7 +67,7 @@ const App = props => {
             path="/matrices/:matriceId"
             element={
               <MainLayout>
-                  <Search />
+                <Search />
               </MainLayout>
             }
           />
@@ -60,7 +75,7 @@ const App = props => {
             path="/matrices/:matriceId/:testCaseName"
             element={
               <MainLayout>
-                  <ResultDetails />
+                <ResultDetails />
               </MainLayout>
             }
           />
@@ -68,7 +83,7 @@ const App = props => {
             path="/login"
             element={
               <MainLayout>
-                  <Login />
+                <Login />
               </MainLayout>
             }
           />
