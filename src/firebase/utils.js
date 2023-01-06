@@ -2,6 +2,7 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
 import { firebaseConfig } from "./config";
+import { axiosReportingClient } from './../services/utils'
 
 firebase.initializeApp(firebaseConfig);
 
@@ -21,15 +22,18 @@ export const handleUserProfile = async ({userAuth, additionalData}) => {
 
   if (!snapshot.exists) {
     const { displayName, email } = userAuth;
-    const appKey = generateUUID();
+    const memberId = generateUUID(); // TODO: unique member check
     // console.log(`appKey${appKey}`);
 
     try {
       await userRef.set({
         displayName,
         email,
-        appKey,
+        memberId,
       });
+
+      await addMemberForReporting(memberId);
+      
     } catch (err) {
       // console.log(err);
     }
@@ -65,4 +69,16 @@ function generateUUID() {
   );
 
   return uuid;
+}
+
+export const addMemberForReporting = (memberId) => {
+  return new Promise((resolve, reject) => {
+    const payload = {memberId};
+    axiosReportingClient.post('addMember',payload).then((response)=>{
+      console.log(response)
+      resolve(response.data)
+    }).catch(err => {
+      reject(err);
+    })
+  })
 }

@@ -9,13 +9,9 @@ import Login from "./pages/Login";
 import Search from "./pages/Search";
 import Matrices from "./pages/Matrices";
 import ResultDetails from "./pages/ResultDetails";
-import Teams from "./pages/Teams";
+import Projects from "./pages/Projects";
 import WithAuth from "./hoc/withAuth";
 import { checkUserSession } from './redux/User/user.actions';
-
-const mapState = ({ user }) => ({
-  currentUser: user.currentUser
-});
 
 const App = props => {
   const dispatch = useDispatch();
@@ -55,11 +51,11 @@ const App = props => {
             }
           />
           <Route
-            path="/teams"
+            path="/projects"
             element={
-              <WithAuth path="/teams">
+              <WithAuth path="/projects">
                 <MainLayout>
-                  <Teams />
+                  <Projects />
                 </MainLayout>
               </WithAuth>
             }

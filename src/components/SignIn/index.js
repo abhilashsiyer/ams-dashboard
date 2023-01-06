@@ -33,10 +33,15 @@ const SignIn = props => {
       console.log('pathBeforeLoginIInSignIn', pathBeforeLogin);
       
       if (pathBeforeLogin){
-        navigate(pathBeforeLogin);
+        if (pathBeforeLogin ==="/"){
+          navigate("/projects");
+        }
+        else {
+          navigate(pathBeforeLogin);
+        }
       }
       else {
-        navigate("/teams");
+        navigate("/projects");
       }
       
     }
