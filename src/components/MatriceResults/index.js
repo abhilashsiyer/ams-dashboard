@@ -41,10 +41,11 @@ const MatriceResults = () => {
       <div className="testResults">
 
       {matrices.map((matrice) => {
-          const { matriceId, clientInfo } = matrice;
-          if (!matriceId || !clientInfo) return null;
+          console.log(matrice)
+          const { executionTestMatriceId, userTestMatriceId, clientInfo, project } = matrice;
+          if (!executionTestMatriceId || !clientInfo) return null;
           return(
-            <MatriceResult key = {matriceId}
+            <MatriceResult key = {executionTestMatriceId}
             {...matrice}
           />
           )

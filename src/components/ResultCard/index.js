@@ -47,10 +47,18 @@ const ResultCard = () => {
           </li>
           <li>
             {testCasesList.map((testCase) => {
-              const { testCaseName, deviceName,logcatSignedUrl,videoSignedUrl,testResult } = testCase;
+              const { testCaseName, deviceName,deviceInfo, logcatSignedUrl,videoSignedUrl,testResult,validationFiles } = testCase;
               if (!testCaseName || !deviceName) return null;
 
-              return <h3 key = {deviceName}>{deviceName} {'=>'} {testResult}</h3>;
+              return (
+                <div>
+                  <h3 key={deviceName}>
+                    {deviceInfo.manufacturer} {deviceInfo.name}
+                    {" =>"} {testResult}
+                  </h3>
+                  <img src={validationFiles.mainBaseFileUrl} alt="base Image" />
+                </div>
+              );
             })}
           </li>
         </ul>

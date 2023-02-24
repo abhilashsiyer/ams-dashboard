@@ -1,5 +1,5 @@
 // import { firestore } from './../../firebase/utils';
-import { axiosClient } from './../../services/utils'
+import { axiosClient, axiosReportingClient } from './../../services/utils'
 
 export const handleFetchResults = (matriceId) => {
     return new Promise((resolve, reject) => {
@@ -21,7 +21,7 @@ export const handleFetchResults = (matriceId) => {
       console.log('fetchResult',fetchResult)
       const payload = {testMatrixId:fetchResult.matriceId, testCaseName: fetchResult.testCaseName}
 
-      axiosClient.post(`api/testResultsForTestCase`, payload).then((response)=>{
+      axiosReportingClient.post(`testResultsForTestCase`, payload).then((response)=>{
         console.log('** helper', response.data)
         resolve(response.data)
       }).catch(err => {

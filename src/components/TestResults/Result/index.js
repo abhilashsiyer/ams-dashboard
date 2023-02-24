@@ -18,8 +18,8 @@ const Result = ({ testCaseName, deviceTestResults, matriceId }) => {
           <li>
             <span className="name">
               {deviceTestResults.map((deviceResult) => {
-                const { deviceName, result } = deviceResult[0];
-                return <h3 key = {deviceName}>{`${deviceName}`} {"=>"} {result}</h3>;
+                const { deviceName, deviceInfo, result } = deviceResult[0];
+                return <h3 key = {deviceName}>{`${deviceInfo.manufacturer} ${deviceInfo.name}`} {"=>"} {result}</h3>;
               })}
               {/* <Link to={`/testResult/${testCaseName}`}>
                 <Button>{testResult}</Button>
