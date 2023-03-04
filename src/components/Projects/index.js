@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProjectsStart } from '../../redux/Projects/projects.actions';
-import './../ResultCard/style.scss';
+import './../Projects/style.scss';
+import { Link } from "react-router-dom";
 
 const mapState = ({projectsData}) =>({
   projects: projectsData.projects 
@@ -31,7 +32,7 @@ const ProjectsCard = () => {
   if (!Array.isArray(projects)) return null;
   if (projects.length < 1) {
     return (
-      <div className="results">
+      <div className="projectCard">
         <h3>
           No projects available for the user. Please contact admin to get yourself added to one.
         </h3>
@@ -39,18 +40,20 @@ const ProjectsCard = () => {
     );
   }
   return (
-    <div className="prjectCard">
+    <div className="projectCard">
       <div className="projectDetails">
-        <ul>
-          <li>
-            <h1>Projects List</h1>
-          </li>
-          <li>
-            {projects.map((project) => {
-              return <h3 key = {project}>{project}</h3>;
-            })}
-          </li>
-        </ul>
+        <h1>Projects</h1>
+        <div class="container">
+        {projects.map((project) => {
+          return (
+            <Link key={project} to={`/`}>
+              <div key={project} className="projectHolder">
+                <h2>{project}</h2>
+              </div>
+            </Link>
+          );
+        })}
+        </div>
       </div>
     </div>
   );
