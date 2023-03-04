@@ -1,7 +1,23 @@
 
 .homepage {
     height: calc(100% - 6.5rem - 5.8rem);
-    h2,h3 {
+    h1,h3 {
       text-align: center;
+      color: rgb(95, 95, 171);
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    }
+  h3{
+      padding-top: 30px;
+  }
+
+.center {
+  display: block;
+  margin: 0 auto;
+}
+
+  p {
+    text-align: center;
+    color: rgb(33, 33, 71);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
   }

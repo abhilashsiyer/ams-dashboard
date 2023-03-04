@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchMatricesStart } from '../../redux/Matrices/matrices.actions';
 import MatriceResult from './MatriceResult';
 import './../MatriceResults/style.scss';
+import { Link } from "react-router-dom";
 
 const mapState = ({ matricesData }) => ({
     results: matricesData.results
@@ -24,7 +25,7 @@ const MatriceResults = () => {
   if (!Array.isArray(matrices)) return null;
   if (matrices.length < 1) {
     return (
-      <div className="results">
+      <div className="matrices">
         <p>
           No search results.
         </p>
@@ -33,36 +34,40 @@ const MatriceResults = () => {
   }
 
   return (
-    <div className="results">
+    <div className="matrices">
 
-      <h1>
-        Browse results
-      </h1>
-      <div className="testResults">
+      <div className="testmatrices">
 
+      <table className="table">
+      <thead>
+              <tr>
+                <th>Initiator</th>
+                <th>Matrice</th>
+              </tr>
+       </thead>       
+      <tbody>
       {matrices.map((matrice) => {
           console.log(matrice)
           const { executionTestMatriceId, userTestMatriceId, clientInfo, project } = matrice;
           if (!executionTestMatriceId || !clientInfo) return null;
-          return(
-            <MatriceResult key = {executionTestMatriceId}
-            {...matrice}
-          />
-          )
-
-          // "https://media1.giphy.com/media/MeJgB3yMMwIaHmKD4z/giphy.gif"
+            return (
+              <tr key = {executionTestMatriceId}>
+              <td>{clientInfo}</td>
+              <Link to={`/matrices/${executionTestMatriceId}`}>
+              <td>{executionTestMatriceId}</td>
+              </Link>
+              </tr>
+          );
           
-
-          // const configResult = {
-          //   testGif,
-          //   testName,
-          //   testResult
-          // };
-
           // return (
-          //   <Result {...configResult} />
+          //   <MatriceResult key = {executionTestMatriceId}
+          //   {...matrice}
+          // />
           // );
         })}
+        </tbody>
+
+      </table>
       
       </div>
     </div>

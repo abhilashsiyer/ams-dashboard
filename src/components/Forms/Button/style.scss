@@ -1,12 +1,16 @@
 .btn {
-    display: block;
+    display: inline-block;
     width: 100%;
-    background: black;
+    background-color: rgb(91, 152, 223);
     padding: 10 px;
     margin: 0 auto;
-    font-size: 1.8rem;
-    color: white;
-    border: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color:azure;
+    border: 1px solid transparent;
+    border-radius: 50px;
     outline: none;
     cursor: pointer;
+    padding-left: 20px;
+    padding-right: 20px;
   }

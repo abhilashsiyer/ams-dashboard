@@ -1,11 +1,11 @@
 import "./style.scss";
 
-import AMSLogo from "./../../assets/AMS.png";
+import AMSLogo from "./../../assets/AMS_Home.png";
 import { Link } from "react-router-dom";
 import Button from "../Forms/Button";
 
 import { useSelector, useDispatch } from "react-redux";
-import { signOutUserStart } from './../../redux/User/user.actions';
+import { signOutUserStart } from '../../redux/User/user.actions';
 import { useNavigate } from 'react-router';
 
 
@@ -13,7 +13,7 @@ const mapState = ({user}) =>({
   currentUser: user.currentUser 
  });
 
-const Header = props => {
+const HomeHeader = props => {
   const dispatch = useDispatch();
   const { currentUser } = useSelector(mapState);
   let navigate = useNavigate();
@@ -28,6 +28,7 @@ const Header = props => {
         <div className="logo">
           <Link to="/">
             <img src={AMSLogo} alt="AMS logo" />
+            <h3>Automation Made Simple</h3>
           </Link>
         </div>
         <div className="callToActions">
@@ -46,11 +47,17 @@ const Header = props => {
           )}
 
           {!currentUser && (
-            <ul>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-            </ul>
+            <nav className="nav-items">
+                <Link to="/login">
+                  <a className="login">Login</a>  
+                </Link>
+                <Link to="/registration">
+                  <a className="getStarted">Get Started</a>  
+                </Link>
+              {/* <li>
+                <Link to="/registration">Get Started</Link>
+              </li> */}
+            </nav>
           )}
         </div>
       </div>
@@ -58,8 +65,8 @@ const Header = props => {
   );
 };
 
-Header.defaultProps = {
+HomeHeader.defaultProps = {
   currentUser: null,
 };
 
-export default Header;
+export default HomeHeader;

@@ -1,0 +1,56 @@
+.header {
+    height: 10.5rem;
+}
+
+.wrap {
+    position: relative;
+    height: 100%;
+    max-width: 1450px;
+    margin: 0 auto;
+
+    .callToActions {
+        position: absolute;
+        top: 50%; right: 30px;
+
+          .nav-items{
+            a {
+                cursor: pointer;
+                padding-top: 10px;
+                padding-right: 20px;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            .getStarted{
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-bottom: 10px;
+                background: #7FDBFF;
+                text-align: center;
+                color: antiquewhite;
+                border: 2px solid #7FDBFF;
+                border-radius: 50px;
+            }
+          }
+    }
+
+    .logo {
+        width: 13.0rem;
+        position: absolute;
+        left: 10px;
+    }
+
+    img {
+        display: block;
+        height: 14.5rem;
+        width: 24.5rem;
+        padding-left: 10px;
+        margin: 0;
+    }
+    h3 {
+        padding-left: 14px;
+        margin: 0;
+        color: #7FDBFF;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+
+}

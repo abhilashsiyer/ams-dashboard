@@ -1,6 +1,5 @@
 .header {
-    height: 6.5rem;
-    box-shadow: 0 2px 4px 0 rgba($color: #000000, $alpha: 1.0);
+    height: 10.5rem;
 }
 
 .wrap {
@@ -34,7 +33,9 @@
 
     img {
         display: block;
-        width: 100%;
+        height: 10.5rem;
+        width: 17.5rem;
+        padding-left: 10px;
         margin: 0;
     }
 }

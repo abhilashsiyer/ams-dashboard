@@ -3,6 +3,7 @@ import Homepage from "./pages/Homepage";
 import { useDispatch } from 'react-redux';
 import Registration from "./pages/Registration";
 import MainLayout from "./layouts/MainLayout";
+import HomeLayout from "./layouts/HomeLayout";
 import { Routes, Route } from "react-router-dom";
 import React, { useEffect } from "react";
 import Login from "./pages/Login";
@@ -27,9 +28,9 @@ const App = props => {
           <Route
             path="/"
             element={
-              <MainLayout>
+              <HomeLayout>
                 <Homepage />
-              </MainLayout>
+              </HomeLayout>
             }
           />
           <Route

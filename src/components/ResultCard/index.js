@@ -56,7 +56,10 @@ const ResultCard = () => {
                     {deviceInfo.manufacturer} {deviceInfo.name}
                     {" =>"} {testResult}
                   </h3>
+                  <h4>{"base Image"}</h4>
                   <img src={validationFiles.mainBaseFileUrl} alt="base Image" />
+                  <h4>{"compared Image"}</h4>
+                  <img src={validationFiles.toCompareBaseUrl} alt="base Image" />
                 </div>
               );
             })}
