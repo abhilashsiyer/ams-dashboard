@@ -42,9 +42,9 @@ const App = props => {
             }
           />
           <Route
-            path="/matrices"
+            path="/projects/:projectId/matrices"
             element={
-              <WithAuth path="/matrices">
+              <WithAuth path="/projects">
                 <MainLayout>
                   <Matrices />
                 </MainLayout>
@@ -62,9 +62,9 @@ const App = props => {
             }
           />
           <Route
-            path="/matrices/:matriceId"
+            path="/projects/:projectId/matrices/:matriceId"
             element={
-              <WithAuth path="/matrices/">
+              <WithAuth path="/projects/">
                 <MainLayout>
                   <Search />
                 </MainLayout>
@@ -72,9 +72,9 @@ const App = props => {
             }
           />
           <Route
-            path="/matrices/:matriceId/:testCaseName"
+            path="/projects/:projectId/matrices/:matriceId/testCase/:testCaseName"
             element={
-              <WithAuth path="/matrices/">
+              <WithAuth path="/projects/">
                 <MainLayout>
                   <ResultDetails />
                 </MainLayout>

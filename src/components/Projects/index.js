@@ -37,16 +37,16 @@ const ProjectsCard = () => {
           No projects available for the user. Please contact admin to get yourself added to one.
         </h3>
       </div>
-    );
+    ); 
   }
   return (
     <div className="projectCard">
       <div className="projectDetails">
         <h1>Projects</h1>
-        <div class="container">
+        <div className="container">
         {projects.map((project) => {
           return (
-            <Link key={project} to={`/`}>
+            <Link key={project} to={`/projects/${project}/matrices`}>
               <div key={project} className="projectHolder">
                 <h2>{project}</h2>
               </div>

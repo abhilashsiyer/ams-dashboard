@@ -4,9 +4,9 @@ import { setMatrices } from './matrices.actions';
 import { takeLatest, put, all, call } from 'redux-saga/effects';
 
 
-export function* fetchMatrices() {
+export function* fetchMatrices({payload}) {
     try {
-      const results = yield handleFetchMatrices();
+      const results = yield handleFetchMatrices(payload);
       yield put(
         setMatrices(results)
       );

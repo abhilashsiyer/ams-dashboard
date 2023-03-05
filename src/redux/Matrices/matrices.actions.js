@@ -1,7 +1,8 @@
 import matricesTypes from './matrices.types';
 
-export const fetchMatricesStart = () => ({
-    type: matricesTypes.FETCH_MATRICES_START
+export const fetchMatricesStart = (projectId) => ({
+    type: matricesTypes.FETCH_MATRICES_START,
+    payload:projectId
   });
   
   export const setMatrices = results => ({

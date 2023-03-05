@@ -2,12 +2,12 @@ import React from "react";
 import Button from "../../Forms/Button";
 import { Link } from "react-router-dom";
 
-const Result = ({ testCaseName, deviceTestResults, matriceId }) => {
+const Result = ({ testCaseName, deviceTestResults, matriceId, projectId }) => {
 
   return (
     <div className="result">
       <div className="thumb">
-        <Link to={`/matrices/${matriceId}/${testCaseName}`}>
+        <Link to={`/projects/${projectId}/matrices/${matriceId}/testCase/${testCaseName}`}>
           <h2>{testCaseName}</h2>
           {/* <img src={testGif} alt={testName} /> */}
         </Link>

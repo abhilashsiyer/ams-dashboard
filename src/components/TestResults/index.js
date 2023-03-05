@@ -12,7 +12,7 @@ const mapState = ({ resultsData }) => ({
 const TestResults = () => {
   const dispatch = useDispatch();
   const { results } = useSelector(mapState);
-  const {matriceId} = useParams();
+  const {matriceId, projectId} = useParams();
 
   useEffect(() => {
     dispatch(
@@ -23,6 +23,7 @@ const TestResults = () => {
 
   const {testCases} = results;
   console.log('** testCasesList in components',results)
+
 
   if (!Array.isArray(testCases)) return null;
   if (testCases.length < 1) {
@@ -47,7 +48,7 @@ const TestResults = () => {
 
           const { testCaseName, deviceTestResults } = testCase;
           if (!testCaseName || !deviceTestResults) return null;
-          const currentResult = {testCaseName,deviceTestResults,matriceId};
+          const currentResult = {testCaseName,deviceTestResults,matriceId, projectId};
           return(
             <Result key = {testCaseName}
             {...currentResult}

@@ -4,6 +4,7 @@ import { fetchMatricesStart } from '../../redux/Matrices/matrices.actions';
 import MatriceResult from './MatriceResult';
 import './../MatriceResults/style.scss';
 import { Link } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
 const mapState = ({ matricesData }) => ({
     results: matricesData.results
@@ -12,16 +13,19 @@ const mapState = ({ matricesData }) => ({
 const MatriceResults = () => {
   const dispatch = useDispatch();
   const { results } = useSelector(mapState);
+  const {projectId} = useParams();
 
   useEffect(() => {
     dispatch(
-      fetchMatricesStart()
+      fetchMatricesStart(projectId)
     )
      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const {matrices} = results;
   console.log('** matrices in components',matrices)
+  console.log('** projectId',projectId)
+
   if (!Array.isArray(matrices)) return null;
   if (matrices.length < 1) {
     return (
@@ -44,7 +48,7 @@ const MatriceResults = () => {
                 <th>Initiator</th>
                 <th>Matrice</th>
               </tr>
-       </thead>       
+       </thead> 
       <tbody>
       {matrices.map((matrice) => {
           console.log(matrice)
@@ -53,7 +57,7 @@ const MatriceResults = () => {
             return (
               <tr key = {executionTestMatriceId}>
               <td>{clientInfo}</td>
-              <Link to={`/matrices/${executionTestMatriceId}`}>
+              <Link to={`/projects/${projectId}/matrices/${executionTestMatriceId}`}>
               <td>{executionTestMatriceId}</td>
               </Link>
               </tr>
