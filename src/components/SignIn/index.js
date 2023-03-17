@@ -82,30 +82,24 @@ const SignIn = props => {
             placeholder="Password"
             handleChange={e => setPassword(e.target.value)}
           />
-
-          <Button type="submit">
-            LogIn
-          </Button>
-
-          <div className="socialSignin">
-            <div className="row">
-              <Button onClick={handleGoogleSignIn}>
-                Sign in with Google
-              </Button>
-            </div>
-          </div>
-
-          <div className="links">
-            <Link to="/registration">
-              Register
-            </Link>
-            {` | `}
-            <Link to="/recovery">
-              Reset Password
-            </Link>
-          </div>
-
         </form>
+
+        <a className="submit" type="submit" onClick={handleSubmit}>
+            LOG IN
+        </a>
+
+        <div className="socialSignin">
+              <a className="submitGoogle" onClick={handleGoogleSignIn}>
+                Sign in with Google
+              </a>
+        </div>
+
+        <div className="links">
+            <Link to="/">
+              Cancel
+            </Link>
+          </div>
+        
       </div>
     </AuthWrapper>
   );

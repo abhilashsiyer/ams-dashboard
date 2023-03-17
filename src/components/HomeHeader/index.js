@@ -1,7 +1,7 @@
 import "./style.scss";
 
 import AMSLogo from "./../../assets/AMS_Home.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Button from "../Forms/Button";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -17,6 +17,8 @@ const HomeHeader = props => {
   const dispatch = useDispatch();
   const { currentUser } = useSelector(mapState);
   let navigate = useNavigate();
+  const location = useLocation();
+
 
   const signOut = () => {
     dispatch(signOutUserStart());
@@ -48,12 +50,16 @@ const HomeHeader = props => {
 
           {!currentUser && (
             <nav className="nav-items">
+              {!location.pathname.includes("/login") && 
                 <Link to="/login">
-                  <a className="login">Login</a>  
-                </Link>
+                <a className="login">Login</a>  
+              </Link>
+              }
+              {!location.pathname.includes("/registration") && 
                 <Link to="/registration">
-                  <a className="getStarted">Get Started</a>  
+                <a className="getStarted">Get Started</a>  
                 </Link>
+              }
               {/* <li>
                 <Link to="/registration">Get Started</Link>
               </li> */}

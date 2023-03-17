@@ -38,41 +38,36 @@ const MatriceResults = () => {
   }
 
   return (
-    <div className="matrices">
+    <div className="matricesCard">
 
-      <div className="testmatrices">
+      <div className="matricesDetails">
+        <h1>Executions</h1>
+      <ul className="executions">
 
-      <table className="table">
-      <thead>
-              <tr>
-                <th>Initiator</th>
-                <th>Matrice</th>
-              </tr>
-       </thead> 
-      <tbody>
       {matrices.map((matrice) => {
           console.log(matrice)
           const { executionTestMatriceId, userTestMatriceId, clientInfo, project } = matrice;
           if (!executionTestMatriceId || !clientInfo) return null;
             return (
-              <tr key = {executionTestMatriceId}>
-              <td>{clientInfo}</td>
-              <Link to={`/projects/${projectId}/matrices/${executionTestMatriceId}`}>
-              <td>{executionTestMatriceId}</td>
-              </Link>
-              </tr>
+              
+              <li className="matricesList" key = {executionTestMatriceId}>
+                <Link to={`/projects/${projectId}/matrices/${executionTestMatriceId}`}>
+                  <div className='title'>
+                    <div className='executionsContainer'>
+                      <span className='initiator'>{clientInfo}</span>
+                      <span> {userTestMatriceId}</span>
+                    </div>
+                    {/* <div className='matriceIdContainer'>
+                      <span></span>
+                    </div> */}
+                  </div>  
+                    {/* <a>{clientInfo}{   } {executionTestMatriceId}</a> */}
+                </Link>
+              </li>
           );
-          
-          // return (
-          //   <MatriceResult key = {executionTestMatriceId}
-          //   {...matrice}
-          // />
-          // );
         })}
-        </tbody>
 
-      </table>
-      
+      </ul>
       </div>
     </div>
   );

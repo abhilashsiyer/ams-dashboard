@@ -105,9 +105,9 @@ const Signup = props => {
             handleChange={e => setConfirmPassword(e.target.value)}
           />
 
-          <Button type="submit">
+          <a type="submit" onClick={handleFormSubmit}>
             Register
-          </Button>
+          </a>
         </form>
 
         <div className="links">
