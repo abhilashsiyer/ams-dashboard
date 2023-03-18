@@ -33,7 +33,7 @@ const Header = props => {
         <div className="callToActions">
           {currentUser && (
             <ul>
-              <Button
+              <button className="logoutButton"
                 onClick={() => {
                   console.log("Logout clicked");
                   signOut();
@@ -41,7 +41,7 @@ const Header = props => {
                   localStorage.setItem('routeBeforeLogin', '/');
                 }}>
                  Logout
-              </Button>
+              </button>
             </ul>
           )}
 

@@ -30,6 +30,13 @@
                 border-radius: 50px;
             }
           }
+          .logoutButton{
+            border: none;
+            cursor: pointer;
+            color: rgb(95, 95, 171);
+            background-color:rgb(255, 255, 255);
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+          }
     }
 
     .logo {

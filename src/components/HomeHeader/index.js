@@ -36,15 +36,14 @@ const HomeHeader = props => {
         <div className="callToActions">
           {currentUser && (
             <ul>
-              <Button
+              <button className="logoutButton"
                 onClick={() => {
-                  console.log("Logout clicked");
                   signOut();
                   navigate("/");
                   localStorage.setItem('routeBeforeLogin', '/');
                 }}>
                  Logout
-              </Button>
+              </button>
             </ul>
           )}
 
