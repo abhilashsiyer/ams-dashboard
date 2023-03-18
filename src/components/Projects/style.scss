@@ -6,29 +6,31 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
   }
 
-    .container {
+    .projectContainer {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(3, 1fr);
       gap: 10px;
+      justify-content: center;
+      align-items: center;
+      
     }
 
   .projectHolder {
     border: 1px solid #e1e3ed;
     background: rgb(240, 243, 243);
     width: 300px;
-    height: 100px;
-    padding: 10px;
+    padding: 40px;
     margin: 10px auto;
-    margin-top: 25px;
     text-align: center;
-    border-radius: 10px; 
-      h2 {
-          padding: 5px;
+    border-radius: 10px;
+
+
+      .projectName {
           text-align: center;
-          padding-left: 25px;
-          padding-right: 25px;
+          font-weight: bold;
           color: rgb(95, 95, 171);
+          font-size: 24px;
       }
   }
   .projectHolder:hover {

@@ -43,12 +43,12 @@ const ProjectsCard = () => {
     <div className="projectCard">
       <div className="projectDetails">
         <h1>Projects</h1>
-        <div className="container">
+        <div className="projectContainer">
         {projects.map((project) => {
           return (
             <Link key={project} to={`/projects/${project}/matrices`}>
               <div key={project} className="projectHolder">
-                <h2>{project}</h2>
+                <span className='projectName'>{project}</span>
               </div>
             </Link>
           );
