@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchResultStart, fetchResultsStart } from './../../redux/Results/results.actions';
+import { fetchResultStart } from './../../redux/Results/results.actions';
 import './../ResultCard/style.scss';
+import ExpandCollapse from "./../../components/ExpandCollapse";
 
 const mapState = ({resultsData}) =>({
   result: resultsData.result 
@@ -51,15 +52,15 @@ const ResultCard = () => {
               if (!testCaseName || !deviceName) return null;
 
               return (
-                <div>
-                  <h3 key={deviceName}>
-                    {deviceInfo.manufacturer} {deviceInfo.name}
-                    {" =>"} {testResult}
-                  </h3>
-                  <h4>{"base Image"}</h4>
-                  <img src={validationFiles.mainBaseFileUrl} alt="base Image" />
-                  <h4>{"compared Image"}</h4>
-                  <img src={validationFiles.toCompareBaseUrl} alt="base Image" />
+                <div className='expandCollapseContainer'>
+                  <ExpandCollapse
+                      baseImg={validationFiles.mainBaseFileUrl}
+                      toCompareImg= {validationFiles.toCompareBaseUrl}
+                      manufacturer= {deviceInfo.manufacturer}
+                      name = {deviceInfo.name}
+                      result = {testResult}
+                      testVideoUrl = {videoSignedUrl}
+                    />
                 </div>
               );
             })}

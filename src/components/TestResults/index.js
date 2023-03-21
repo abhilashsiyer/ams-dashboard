@@ -29,9 +29,9 @@ const TestResults = () => {
   if (testCases.length < 1) {
     return (
       <div className="results">
-        <p>
+        <h1>
           No search results.
-        </p>
+        </h1>
       </div>
     );
   }
@@ -39,9 +39,8 @@ const TestResults = () => {
   return (
     <div className="results">
 
-      <h1>
-        Browse results
-      </h1>
+  <div className="resultDetails">
+        <h1>Results</h1>
       <div className="testResults">
 
       {testCases.map((testCase) => {
@@ -58,6 +57,7 @@ const TestResults = () => {
       
       </div>
     </div>
+  </div>
   );
 };
 

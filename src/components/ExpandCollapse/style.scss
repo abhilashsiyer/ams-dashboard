@@ -1,0 +1,41 @@
+.validationTitle{
+  text-align: center;
+  font-weight: bold;
+  color: rgb(95, 95, 171);
+  font-size: 18px;
+  padding-top: 80px;
+  margin-top: 40px;
+}
+
+
+.resultContainer{
+      text-align: center;
+      color: rgb(95, 95, 171);
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.expandedResults{
+  padding: 30px;
+}
+.testVideo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  padding: 30px;
+}
+.validationResults {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    
+
+    .baseImg,
+    .compareImg {
+      display: inline-block;
+      max-width: 100%;
+      height: auto;
+      margin-top: 10px;
+      box-shadow: 0 0 0 1px black;
+    }
+  }
