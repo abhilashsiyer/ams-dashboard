@@ -25,17 +25,21 @@ const ExpandCollapse = ({ baseImg, toCompareImg, manufacturer, name, result, tes
       className="resultContainer"
       style={styles.container}
       onClick={handleExpandClick}>
-      <div>
-        <span className="">
+      <div className="deviceTitle">
+        <span>
           {manufacturer} {name}
-          {" => "}
-          {result}
+          {"  - "}
         </span>
+
+        {result.includes("Passed") && <span className="green-text">{result}</span>}
+
+        {!result.includes("Passed") && <span className="red-text">{result}</span>}
+        
       </div>
       <div style={styles.content}>
         {isExpanded && (
           <div className="expandedResults">
-              <span className="validationTitle">Validation Results</span>
+            <span className="validationTitle">Page Validation Results</span>
             <div className="validationResults">
               {baseImg && (
                 <img className="baseImg" src={baseImg} alt="base Image" />
