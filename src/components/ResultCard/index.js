@@ -44,7 +44,7 @@ const ResultCard = () => {
       <div className="productDetails">
         <ul>
           <li>
-            <h1>{testCaseName}</h1>
+            <h1 className="testCaseNameTitle">{testCaseName}</h1>
           </li>
           <li>
             {testCasesList.map((testCase) => {
@@ -60,6 +60,7 @@ const ResultCard = () => {
                       name = {deviceInfo.name}
                       result = {testResult}
                       testVideoUrl = {videoSignedUrl}
+                      key= {deviceName}
                     />
                 </div>
               );

@@ -8,7 +8,7 @@ const Result = ({ testCaseName, deviceTestResults, matriceId, projectId }) => {
     <div className="result">
       <div className="thumb">
         <Link to={`/projects/${projectId}/matrices/${matriceId}/testCase/${testCaseName}`}>
-          <h2>{testCaseName}</h2>
+          <h3 className="testNameTitle">{testCaseName}</h3>
           {/* <img src={testGif} alt={testName} /> */}
         </Link>
       </div>
@@ -19,7 +19,11 @@ const Result = ({ testCaseName, deviceTestResults, matriceId, projectId }) => {
             <span className="name">
               {deviceTestResults.map((deviceResult) => {
                 const { deviceName, deviceInfo, result } = deviceResult[0];
-                return <h3 key = {deviceName}>{`${deviceInfo.manufacturer} ${deviceInfo.name}`} {"=>"} {result}</h3>;
+                return (
+                  <Link to={`/projects/${projectId}/matrices/${matriceId}/testCase/${testCaseName}`}>
+                      <h3 className= "testResultDescription" key = {deviceName}>{`${deviceInfo.manufacturer} ${deviceInfo.name}`} {" - "} {result}</h3>
+                  </Link>
+                )
               })}
               {/* <Link to={`/testResult/${testCaseName}`}>
                 <Button>{testResult}</Button>

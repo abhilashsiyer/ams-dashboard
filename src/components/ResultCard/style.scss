@@ -1,6 +1,10 @@
 .productCard {
   max-width: 80.0rem;
   margin: 0 auto 10.0rem;
+  
+  .testCaseNameTitle{
+    padding-bottom: 20px;
+  }
 
   .expandCollapseContainer{
     padding: 10px;
@@ -11,6 +15,7 @@
       color: rgb(95, 95, 171);
       font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
     }
+
 
   .productDetails {
     ul, ul li {

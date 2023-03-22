@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Video from "../Video";
 import './../ExpandCollapse/style.scss';
 
-const ExpandCollapse = ({ baseImg, toCompareImg, manufacturer, name, result, testVideoUrl }) => {
+const ExpandCollapse = ({ baseImg, toCompareImg, manufacturer, name, result, testVideoUrl, key }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleExpandClick = () => {
@@ -12,7 +12,7 @@ const ExpandCollapse = ({ baseImg, toCompareImg, manufacturer, name, result, tes
   const styles = {
     container: {
       border: "1px solid #ccc",
-      padding: "10px",
+      padding: "20px",
       cursor: "pointer",
     },
     content: {
@@ -24,7 +24,8 @@ const ExpandCollapse = ({ baseImg, toCompareImg, manufacturer, name, result, tes
     <div
       className="resultContainer"
       style={styles.container}
-      onClick={handleExpandClick}>
+      onClick={handleExpandClick}
+      key={key}>
       <div className="deviceTitle">
         <span>
           {manufacturer} {name}
