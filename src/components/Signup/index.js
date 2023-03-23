@@ -35,7 +35,7 @@ const Signup = props => {
   useEffect(() => {
     if (currentUser) {
       reset(); 
-      navigate('/');
+      navigate('/projects');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser]);
@@ -105,7 +105,7 @@ const Signup = props => {
             handleChange={e => setConfirmPassword(e.target.value)}
           />
 
-          <a type="submit" onClick={handleFormSubmit}>
+          <a type="submit" className= "register" onClick={handleFormSubmit}>
             Register
           </a>
         </form>

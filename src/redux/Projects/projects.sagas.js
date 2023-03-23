@@ -1,6 +1,6 @@
 import projectTypes from './projects.types';
 import { handleFetchProjects } from './projects.helpers';
-import { setProjects } from './projects.actions';
+import { setProjects, setProjectsDone } from './projects.actions';
 import { takeLatest, put, all, call } from 'redux-saga/effects';
 
 
@@ -9,6 +9,10 @@ export function* fetchProjects({payload}) {
       const projects = yield handleFetchProjects(payload);
       yield put(
         setProjects(projects)
+      );
+      let fetchDone = true;
+      yield put(
+        setProjectsDone(fetchDone)
       );
     } catch (err) {
       console.log(err);

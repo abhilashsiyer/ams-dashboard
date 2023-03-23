@@ -1,5 +1,4 @@
 import React from "react";
-import Directory from "../../components/Directory";
 import SampleTest from "./../../assets/SampleTest.png";
 import VerifyPage from "./../../assets/verifyPage.png";
 import "./style.scss";

@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 import {useDispatch} from 'react-redux';
 import {emailSignInStart, googleSignInStart} from './../../redux/User/user.actions';
+import { changeLoadingStateStart } from '../../redux/Loader/loader.actions';
 
 import { useSelector } from "react-redux";
 
@@ -52,6 +53,8 @@ const SignIn = props => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(emailSignInStart({ email, password }));
+    let loaderState = true;
+    dispatch(changeLoadingStateStart(loaderState));
   };
 
   const handleGoogleSignIn = () => {

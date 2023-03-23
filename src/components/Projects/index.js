@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProjectsStart } from '../../redux/Projects/projects.actions';
+import { changeLoadingStateStart } from '../../redux/Loader/loader.actions';
 import './../Projects/style.scss';
 import { Link } from "react-router-dom";
 
@@ -12,25 +13,44 @@ const mapUserState = ({user}) =>({
   currentUser: user.currentUser 
  }); 
 
+ const mapLoaderState = ({loadingData}) =>({
+  loadS: loadingData.results 
+ });
+
+ const mapFetchDoneState = ({projectsData}) =>({
+  fetchDoneS: projectsData.fetchDone 
+ });
+
 const ProjectsCard = () => {
   const dispatch = useDispatch();
   const { projects } = useSelector(mapState);
   const { currentUser } = useSelector(mapUserState);
+  const { loadS } = useSelector(mapLoaderState);
+  const { fetchDoneS } = useSelector(mapFetchDoneState);
   const memberId = currentUser.memberId;
-  // const projectsToDisplay = projects.member[0].project ;
 
   useEffect(() => {
+
     dispatch(
       fetchProjectsStart(memberId)
     )
-     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
-  console.log('** projects', projects);
-  console.log('** currentUser', memberId);
+    if (fetchDoneS){
+      let loaderState = false;
+      console.log('** fetch Done')
+      dispatch(changeLoadingStateStart(loaderState));
+    }
+  }, [fetchDoneS]);
+
+  // console.log('** projects', projects);
+  // console.log('** currentUser', memberId);
+  // console.log('** loadSS', loadS);
+  // console.log('** fetchDoneS', fetchDoneS);
+
+  
 
   if (!Array.isArray(projects)) return null;
-  if (projects.length < 1) {
+  if (fetchDoneS && projects.length < 1) {
     return (
       <div className="projectCard">
         <h3>
