@@ -2,12 +2,12 @@ import React from "react";
 import Button from "../../Forms/Button";
 import { Link } from "react-router-dom";
 
-const Result = ({ testCaseName, deviceTestResults, matriceId, projectId }) => {
+const Result = ({ testCaseName, deviceTestResults, matriceId, projectId, appId }) => {
 
   return (
     <div className="result">
       <Link
-        to={`/projects/${projectId}/matrices/${matriceId}/testCase/${testCaseName}`}>
+        to={`/projects/${projectId}/apps/${appId}/matrices/${matriceId}/testCase/${testCaseName}`}>
         <div className="thumb">
           <h3 className="testNameTitle">{testCaseName}</h3>
         </div>

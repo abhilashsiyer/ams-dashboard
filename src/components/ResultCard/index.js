@@ -11,9 +11,9 @@ const mapState = ({resultsData}) =>({
 
 const ResultCard = () => {
   const dispatch = useDispatch();
-  const { matriceId, testCaseName } = useParams();
+  const { matriceId, testCaseName, appId } = useParams();
   const { result } = useSelector(mapState);
-  const fetchResult = {testCaseName,matriceId};
+  const fetchResult = {testCaseName,matriceId,appId};
 
   useEffect(() => {
     dispatch(

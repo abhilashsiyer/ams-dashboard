@@ -12,11 +12,11 @@ const mapState = ({ resultsData }) => ({
 const TestResults = () => {
   const dispatch = useDispatch();
   const { results } = useSelector(mapState);
-  const {matriceId, projectId} = useParams();
+  const {matriceId, projectId, appId} = useParams();
 
   useEffect(() => {
     dispatch(
-        fetchResultsStart(matriceId)
+        fetchResultsStart({matriceId,appId})
     )
      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -47,7 +47,7 @@ const TestResults = () => {
 
           const { testCaseName, deviceTestResults } = testCase;
           if (!testCaseName || !deviceTestResults) return null;
-          const currentResult = {testCaseName,deviceTestResults,matriceId, projectId};
+          const currentResult = {testCaseName,deviceTestResults,matriceId, projectId, appId};
           return(
             <Result key = {testCaseName}
             {...currentResult}

@@ -7,12 +7,13 @@ import HomeLayout from "./layouts/HomeLayout";
 import { Routes, Route } from "react-router-dom";
 import React, { useEffect } from "react";
 import Login from "./pages/Login";
-import Search from "./pages/Search";
+import Results from "./pages/Results";
 import Matrices from "./pages/Matrices";
 import ResultDetails from "./pages/ResultDetails";
 import Projects from "./pages/Projects";
 import WithAuth from "./hoc/withAuth";
 import { checkUserSession } from './redux/User/user.actions';
+import Apps from "./pages/Apps";
 
 const App = props => {
   const dispatch = useDispatch();
@@ -42,16 +43,6 @@ const App = props => {
             }
           />
           <Route
-            path="/projects/:projectId/matrices"
-            element={
-              <WithAuth path="/projects">
-                <MainLayout>
-                  <Matrices />
-                </MainLayout>
-              </WithAuth>
-            }
-          />
-          <Route
             path="/projects"
             element={
               <WithAuth path="/projects">
@@ -62,17 +53,37 @@ const App = props => {
             }
           />
           <Route
-            path="/projects/:projectId/matrices/:matriceId"
+            path="/projects/:projectId/apps"
             element={
               <WithAuth path="/projects/">
                 <MainLayout>
-                  <Search />
+                  <Apps />
                 </MainLayout>
               </WithAuth>
             }
           />
           <Route
-            path="/projects/:projectId/matrices/:matriceId/testCase/:testCaseName"
+            path="/projects/:projectId/apps/:appId/matrices"
+            element={
+              <WithAuth path="/projects">
+                <MainLayout>
+                  <Matrices />
+                </MainLayout>
+              </WithAuth>
+            }
+          />
+          <Route
+            path="/projects/:projectId/apps/:appId/matrices/:matriceId"
+            element={
+              <WithAuth path="/projects/">
+                <MainLayout>
+                  <Results />
+                </MainLayout>
+              </WithAuth>
+            }
+          />
+          <Route
+            path="/projects/:projectId/apps/:appId/matrices/:matriceId/testCase/:testCaseName"
             element={
               <WithAuth path="/projects/">
                 <MainLayout>

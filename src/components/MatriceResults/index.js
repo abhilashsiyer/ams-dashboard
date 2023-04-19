@@ -14,6 +14,7 @@ const MatriceResults = () => {
   const dispatch = useDispatch();
   const { results } = useSelector(mapState);
   const {projectId} = useParams();
+  const {appId} = useParams();
 
   useEffect(() => {
     dispatch(
@@ -51,7 +52,7 @@ const MatriceResults = () => {
             return (
               
               <li className="matricesList" key = {executionTestMatriceId}>
-                <Link to={`/projects/${projectId}/matrices/${executionTestMatriceId}`}>
+                <Link to={`/projects/${projectId}/apps/${appId}/matrices/${executionTestMatriceId}`}>
                   <div className='title'>
                     <div className='executionsContainer'>
                       <span className='initiator'>{clientInfo}</span>

@@ -1,0 +1,40 @@
+.projectCard {
+
+  h1,h3,h2 {
+    text-align: center;
+    color: rgb(95, 95, 171);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+  }
+
+    .projectContainer {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      
+    }
+
+  .projectHolder {
+    border: 1px solid #e1e3ed;
+    background: rgb(240, 243, 243);
+    width: 300px;
+    padding: 40px;
+    margin: 10px auto;
+    text-align: center;
+    border-radius: 10px;
+
+
+      .projectName {
+          text-align: center;
+          font-weight: bold;
+          color: rgb(95, 95, 171);
+          font-size: 24px;
+      }
+  }
+  .projectHolder:hover {
+    background-color: rgb(203, 211, 216);
+  }
+
+}

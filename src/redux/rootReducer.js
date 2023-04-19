@@ -5,12 +5,13 @@ import resultsReducer from './Results/results.reducer';
 import matricesReducer from './Matrices/matrices.reducer';
 import projectsReducer from './Projects/projects.reducer';
 import loaderReducer from './Loader/loader.reducer';
-
+import appsReducer from './Apps/apps.reducer';
 
 export default combineReducers({
   user: userReducer,
   resultsData: resultsReducer,
   matricesData: matricesReducer,
   projectsData: projectsReducer,
-  loadingData: loaderReducer
+  loadingData: loaderReducer,
+  appsData: appsReducer
 });

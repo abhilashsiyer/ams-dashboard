@@ -66,7 +66,7 @@ const ProjectsCard = () => {
         <div className="projectContainer">
         {projects.map((project) => {
           return (
-            <Link key={project} to={`/projects/${project}/matrices`}>
+            <Link key={project} to={`/projects/${project}/apps`}>
               <div key={project} className="projectHolder">
                 <span className='projectName'>{project}</span>
               </div>
