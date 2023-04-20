@@ -25,11 +25,6 @@ const AppsCard = () => {
   const {apps} = results;
   console.log('** appsData in components',apps)
 
-  // console.log('** projects', projects);
-  // console.log('** currentUser', memberId);
-  // console.log('** loadSS', loadS);
-  // console.log('** fetchDoneS', fetchDoneS);
-
   
 
   if (!Array.isArray(apps)) return null;

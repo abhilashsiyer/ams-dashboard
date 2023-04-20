@@ -5,6 +5,7 @@ import MatriceResult from './MatriceResult';
 import './../MatriceResults/style.scss';
 import { Link } from "react-router-dom";
 import { useParams } from 'react-router-dom';
+import { changeLoadingStateStart } from '../../redux/Loader/loader.actions';
 
 const mapState = ({ matricesData }) => ({
     results: matricesData.results
@@ -26,6 +27,12 @@ const MatriceResults = () => {
   const {matrices} = results;
   console.log('** matrices in components',matrices)
   console.log('** projectId',projectId)
+
+  const handleSubmit = async (e) => {
+    console.log('**handleSubmit from matrices')
+    let loaderState = true;
+    dispatch(changeLoadingStateStart(loaderState));
+  };
 
   if (!Array.isArray(matrices)) return null;
   if (matrices.length < 1) {
@@ -51,7 +58,7 @@ const MatriceResults = () => {
           if (!executionTestMatriceId || !clientInfo) return null;
             return (
               
-              <li className="matricesList" key = {executionTestMatriceId}>
+              <li className="matricesList" key = {executionTestMatriceId} onClick={handleSubmit}>
                 <Link to={`/projects/${projectId}/apps/${appId}/matrices/${executionTestMatriceId}`}>
                   <div className='title'>
                     <div className='executionsContainer'>

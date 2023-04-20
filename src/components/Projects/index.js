@@ -35,17 +35,14 @@ const ProjectsCard = () => {
       fetchProjectsStart(memberId)
     )
 
+    console.log('** fetch Done', fetchDoneS )
+
     if (fetchDoneS){
       let loaderState = false;
       console.log('** fetch Done')
       dispatch(changeLoadingStateStart(loaderState));
     }
   }, [fetchDoneS]);
-
-  // console.log('** projects', projects);
-  // console.log('** currentUser', memberId);
-  // console.log('** loadSS', loadS);
-  // console.log('** fetchDoneS', fetchDoneS);
 
   
 

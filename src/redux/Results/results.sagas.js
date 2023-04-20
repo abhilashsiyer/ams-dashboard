@@ -1,6 +1,6 @@
 import resultsTypes from './results.types';
 import { handleFetchResults, handleFetchResult } from './results.helpers';
-import { setResult, setResults } from './results.actions';
+import { setResult, setResults, setResultsDone } from './results.actions';
 import { takeLatest, put, all, call } from 'redux-saga/effects';
 
 
@@ -9,6 +9,13 @@ export function* fetchResults({ payload }) {
       const results = yield handleFetchResults(payload);
       yield put(
         setResults(results)
+      );
+
+      console.log('** fetchResultDone start')
+
+      let fetchResultDone = true;
+      yield put(
+        setResultsDone(fetchResultDone)
       );
   
     } catch (err) {
@@ -26,9 +33,14 @@ export function* fetchResults({ payload }) {
       yield put(
         setResult(result)
       );
+
+      let fetchResultDone = true;
+      yield put(
+        setResultsDone(fetchResultDone)
+      );
   
     } catch (err) {
-      // console.log(err);
+       console.log(err);
     }
   }
   

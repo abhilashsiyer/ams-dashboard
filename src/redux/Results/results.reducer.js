@@ -2,7 +2,8 @@ import resultTypes from './results.types';
 
 const INITIAL_STATE = {
   results: [],
-  result: {}
+  result: {},
+  fetchResultDone:false,
 };
 
 const resultsReducer = (state=INITIAL_STATE, action) => {
@@ -17,6 +18,11 @@ const resultsReducer = (state=INITIAL_STATE, action) => {
         ...state,
         result: action.payload
       } 
+      case resultTypes.SET_RESULTS_DONE:
+      return {
+        ...state,
+        fetchResultDone: action.payload
+      }
     default:
       return state;
   }

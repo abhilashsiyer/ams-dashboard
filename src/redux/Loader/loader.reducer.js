@@ -2,7 +2,7 @@ import loaderTypes from './loader.types';
 
 const INITIAL_STATE = {
   results: false,
-  fetchDone: false
+  fetchDone: true
 };
 
 const loaderReducer = (state=INITIAL_STATE, action) => {
