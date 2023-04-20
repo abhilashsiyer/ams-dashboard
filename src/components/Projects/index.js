@@ -37,13 +37,21 @@ const ProjectsCard = () => {
 
     console.log('** fetch Done', fetchDoneS )
 
+    let fetchState = false;
+
     if (fetchDoneS){
       let loaderState = false;
+      fetchState= true;
       console.log('** fetch Done')
       dispatch(changeLoadingStateStart(loaderState));
     }
-  }, [fetchDoneS]);
 
+    if (!fetchDoneS && !fetchState){
+      let loaderState = true;
+      console.log('** fetch on load')
+      dispatch(changeLoadingStateStart(loaderState));
+    }
+  }, [fetchDoneS]);
   
 
   if (!Array.isArray(projects)) return null;
