@@ -35,33 +35,36 @@ const HomeHeader = props => {
         </div>
         <div className="callToActions">
           {currentUser && (
-            <ul>
-              <button className="logoutButton"
+            <nav className="nav-items">
+              {!location.pathname.includes("/projects") && (
+                <Link to="/projects">
+                  <a className="login">Projects</a>
+                </Link>
+              )}
+              <button
+                className="logoutButton"
                 onClick={() => {
                   signOut();
                   navigate("/");
-                  localStorage.setItem('routeBeforeLogin', '/');
+                  localStorage.setItem("routeBeforeLogin", "/");
                 }}>
-                 Logout
+                Logout
               </button>
-            </ul>
+            </nav>
           )}
 
           {!currentUser && (
             <nav className="nav-items">
-              {!location.pathname.includes("/login") && 
+              {!location.pathname.includes("/login") && (
                 <Link to="/login">
-                <a className="login">Login</a>  
-              </Link>
-              }
-              {!location.pathname.includes("/registration") && 
-                <Link to="/registration">
-                <a className="getStarted">Get Started</a>  
+                  <a className="login">Login</a>
                 </Link>
-              }
-              {/* <li>
-                <Link to="/registration">Get Started</Link>
-              </li> */}
+              )}
+              {!location.pathname.includes("/registration") && (
+                <Link to="/registration">
+                  <a className="getStarted">Get Started</a>
+                </Link>
+              )}
             </nav>
           )}
         </div>
