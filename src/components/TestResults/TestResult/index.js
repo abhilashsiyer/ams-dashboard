@@ -1,8 +1,16 @@
 import React from "react";
-import Button from "../../Forms/Button";
 import { Link } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { changeLoadingStateStart } from '../../../redux/Loader/loader.actions'
 
-const Result = ({ testCaseName, deviceTestResults, matriceId, projectId, appId }) => {
+const TestResult = ({ testCaseName, deviceTestResults, matriceId, projectId, appId }) => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = async (e) => {
+    console.log('**handleSubmit from matrices')
+    let loaderState = true;
+    dispatch(changeLoadingStateStart(loaderState));
+  };
 
   return (
     <div className="result">
@@ -25,16 +33,8 @@ const Result = ({ testCaseName, deviceTestResults, matriceId, projectId, appId }
                     </h3>
                   );
                 })}
-                {/* <Link to={`/testResult/${testCaseName}`}>
-                <Button>{testResult}</Button>
-              </Link> */}
               </span>
             </li>
-            {/* <li key="{name}">
-            <span className="price">
-              {testResult}
-            </span>
-          </li> */}
           </ul>
         </div>
       </Link>
@@ -42,4 +42,4 @@ const Result = ({ testCaseName, deviceTestResults, matriceId, projectId, appId }
   );
 };
 
-export default Result;
+export default TestResult;

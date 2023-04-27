@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchResultsStart } from './../../redux/Results/results.actions';
 import { changeLoadingStateStart } from '../../redux/Loader/loader.actions';
-import Result from './Result';
+import TestResult from './TestResult';
 import './../TestResults/style.scss';
 
 const mapState = ({ resultsData }) => ({
@@ -62,7 +62,7 @@ const TestResults = () => {
           if (!testCaseName || !deviceTestResults) return null;
           const currentResult = {testCaseName,deviceTestResults,matriceId, projectId, appId};
           return(
-            <Result key = {testCaseName}
+            <TestResult key = {testCaseName}
             {...currentResult}
           />
           )

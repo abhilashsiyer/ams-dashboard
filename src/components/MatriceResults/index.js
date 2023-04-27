@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMatricesStart } from '../../redux/Matrices/matrices.actions';
-import MatriceResult from './MatriceResult';
 import './../MatriceResults/style.scss';
 import { Link } from "react-router-dom";
 import { useParams } from 'react-router-dom';
