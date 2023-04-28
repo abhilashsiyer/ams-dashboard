@@ -1,10 +1,10 @@
 import React from 'react';
-import ResultCard from '../../components/ResultCard';
+import ResultDetailsCard from '../../components/ResultDetailsCard';
 
 const ResultDetails = () => {
   return (
     <div>
-      <ResultCard />
+      <ResultDetailsCard />
     </div>
   );
 }

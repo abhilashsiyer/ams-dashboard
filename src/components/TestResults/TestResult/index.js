@@ -7,13 +7,13 @@ const TestResult = ({ testCaseName, deviceTestResults, matriceId, projectId, app
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
-    console.log('**handleSubmit from matrices')
+    console.log('**handleSubmit from test results')
     let loaderState = true;
     dispatch(changeLoadingStateStart(loaderState));
   };
 
   return (
-    <div className="result">
+    <div className="result" key={testCaseName} onClick={handleSubmit}>
       <Link
         to={`/projects/${projectId}/apps/${appId}/matrices/${matriceId}/testCase/${testCaseName}`}>
         <div className="thumb">

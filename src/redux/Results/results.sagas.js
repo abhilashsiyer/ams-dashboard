@@ -1,7 +1,8 @@
 import resultsTypes from './results.types';
 import { handleFetchResults, handleFetchResult } from './results.helpers';
-import { setResult, setResults, setResultsDone } from './results.actions';
+import { setResult, setResults } from './results.actions';
 import { takeLatest, put, all, call } from 'redux-saga/effects';
+import { changeLoadingStateStart } from './../Loader/loader.actions';
 
 
 export function* fetchResults({ payload }) {
@@ -11,15 +12,14 @@ export function* fetchResults({ payload }) {
         setResults(results)
       );
 
-      console.log('** fetchResultDone start')
-
-      let fetchResultDone = true;
       yield put(
-        setResultsDone(fetchResultDone)
+        changeLoadingStateStart(false)
       );
   
     } catch (err) {
-      // console.log(err);
+      yield put(
+        changeLoadingStateStart(false)
+      );
     }
   }
   
@@ -33,14 +33,15 @@ export function* fetchResults({ payload }) {
       yield put(
         setResult(result)
       );
-
-      let fetchResultDone = true;
+      
       yield put(
-        setResultsDone(fetchResultDone)
+        changeLoadingStateStart(false)
       );
   
     } catch (err) {
-       console.log(err);
+      yield put(
+        changeLoadingStateStart(false)
+      );
     }
   }
   

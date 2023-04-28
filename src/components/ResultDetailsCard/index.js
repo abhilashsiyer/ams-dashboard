@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchResultStart } from './../../redux/Results/results.actions';
-import './../ResultCard/style.scss';
-import ExpandCollapse from "./../../components/ExpandCollapse";
+import { fetchResultStart } from '../../redux/Results/results.actions';
+import './style.scss';
+import ExpandCollapse from "../ExpandCollapse";
 
 const mapState = ({resultsData}) =>({
   result: resultsData.result 
  });
 
-const ResultCard = () => {
+const ResultDetailsCard = () => {
   const dispatch = useDispatch();
   const { matriceId, testCaseName, appId } = useParams();
   const { result } = useSelector(mapState);
@@ -72,4 +72,4 @@ const ResultCard = () => {
   );
 }
 
-export default ResultCard;
+export default ResultDetailsCard;

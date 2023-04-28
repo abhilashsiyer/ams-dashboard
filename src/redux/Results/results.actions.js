@@ -19,8 +19,3 @@ export const fetchResultsStart = (resultIdentifiers) => ({
     type: resultsTypes.SET_RESULT,
     payload: result
   });  
-
-  export const setResultsDone = fetchResultDone => ({
-    type: resultsTypes.SET_RESULTS_DONE,
-    payload: fetchResultDone
-  });

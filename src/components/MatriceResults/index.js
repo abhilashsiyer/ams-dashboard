@@ -24,11 +24,8 @@ const MatriceResults = () => {
   }, []);
 
   const {matrices} = results;
-  console.log('** matrices in components',matrices)
-  console.log('** projectId',projectId)
 
   const handleSubmit = async (e) => {
-    console.log('**handleSubmit from matrices')
     let loaderState = true;
     dispatch(changeLoadingStateStart(loaderState));
   };

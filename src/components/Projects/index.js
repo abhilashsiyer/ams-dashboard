@@ -21,6 +21,11 @@ const mapUserState = ({user}) =>({
   fetchDoneS: projectsData.fetchDone 
  });
 
+ const handleSubmit = async (e) => {
+  let loaderState = true;
+  dispatch(changeLoadingStateStart(loaderState));
+};
+
 const ProjectsCard = () => {
   const dispatch = useDispatch();
   const { projects } = useSelector(mapState);
@@ -72,7 +77,7 @@ const ProjectsCard = () => {
         {projects.map((project) => {
           return (
             <Link key={project} to={`/projects/${project}/apps`}>
-              <div key={project} className="projectHolder">
+              <div key={project} className="projectHolder" onClick={handleSubmit}>
                 <span className='projectName'>{project}</span>
               </div>
             </Link>

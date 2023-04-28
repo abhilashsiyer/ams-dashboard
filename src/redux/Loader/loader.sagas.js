@@ -6,7 +6,7 @@ export function* fetchLoadingState({payload}) {
   try {
     console.log('fetchLoadingState', payload)
     const results = payload;
-    console.log('resulsHere', results)
+    console.log('**resulsHere', results)
     yield put(
       setLoadingState(results)
     );
