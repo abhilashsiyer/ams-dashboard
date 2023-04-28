@@ -4,6 +4,7 @@ import { fetchAppsStart } from '../../redux/Apps/apps.actions';
 import { useParams } from 'react-router-dom';
 import './../Projects/style.scss';
 import { Link } from "react-router-dom";
+import { changeLoadingStateStart } from './../../redux/Loader/loader.actions';
 
 const mapState = ({appsData}) =>({
   results: appsData.results 
@@ -20,11 +21,16 @@ const AppsCard = () => {
     dispatch(
       fetchAppsStart(projectId)
     )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const {apps} = results;
   console.log('** appsData in components',apps)
 
+  const handleSubmit = async (e) => {
+    let loaderState = true;
+    dispatch(changeLoadingStateStart(loaderState));
+  };
   
 
   if (!Array.isArray(apps)) return null;
@@ -44,7 +50,7 @@ const AppsCard = () => {
         <div className="projectContainer">
         {apps.map((app) => {
           return (
-            <Link key={app.historyId} to={`/projects/${projectId}/apps/${app.historyId}/matrices`}>
+            <Link key={app.historyId} to={`/projects/${projectId}/apps/${app.historyId}/matrices`} onClick={handleSubmit}>
               <div key={app.historyId} className="projectHolder">
                 <span className='projectName'>{app.displayName}</span>
               </div>

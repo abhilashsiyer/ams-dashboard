@@ -2,6 +2,7 @@ import matricesTypes from './matrices.types';
 import { handleFetchMatrices } from './matrices.helpers';
 import { setMatrices } from './matrices.actions';
 import { takeLatest, put, all, call } from 'redux-saga/effects';
+import { changeLoadingStateStart } from './../Loader/loader.actions';
 
 
 export function* fetchMatrices({payload}) {
@@ -10,9 +11,14 @@ export function* fetchMatrices({payload}) {
       yield put(
         setMatrices(results)
       );
+      yield put(
+        changeLoadingStateStart(false)
+      );
   
     } catch (err) {
-      // console.log(err);
+      yield put(
+        changeLoadingStateStart(false)
+      );
     }
   }
   

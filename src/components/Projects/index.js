@@ -13,24 +13,14 @@ const mapUserState = ({user}) =>({
   currentUser: user.currentUser 
  }); 
 
- const mapLoaderState = ({loadingData}) =>({
-  loadS: loadingData.results 
- });
-
  const mapFetchDoneState = ({projectsData}) =>({
   fetchDoneS: projectsData.fetchDone 
  });
-
- const handleSubmit = async (e) => {
-  let loaderState = true;
-  dispatch(changeLoadingStateStart(loaderState));
-};
 
 const ProjectsCard = () => {
   const dispatch = useDispatch();
   const { projects } = useSelector(mapState);
   const { currentUser } = useSelector(mapUserState);
-  const { loadS } = useSelector(mapLoaderState);
   const { fetchDoneS } = useSelector(mapFetchDoneState);
   const memberId = currentUser.memberId;
 
@@ -56,8 +46,13 @@ const ProjectsCard = () => {
       console.log('** fetch on load')
       dispatch(changeLoadingStateStart(loaderState));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchDoneS]);
   
+  const handleSubmit = async (e) => {
+    let loaderState = true;
+    dispatch(changeLoadingStateStart(loaderState));
+  };
 
   if (!Array.isArray(projects)) return null;
   if (fetchDoneS && projects.length < 1) {
