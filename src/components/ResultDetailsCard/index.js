@@ -43,10 +43,10 @@ const ResultDetailsCard = () => {
       </div>
       <div className="productDetails">
         <ul>
-          <li>
+          <li key= {"testCaseNameTitle"}>
             <h1 className="testCaseNameTitle">{testCaseName}</h1>
           </li>
-          <li>
+          <li key= {"expandCollapseContainer"}>
             {testCasesList.map((testCase) => {
               const { testCaseName, deviceName,deviceInfo, logcatSignedUrl,videoSignedUrl,testResult,validationFiles } = testCase;
               if (!testCaseName || !deviceName) return null;

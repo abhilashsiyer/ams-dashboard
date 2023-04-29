@@ -40,18 +40,26 @@ const ExpandCollapse = ({ baseImg, toCompareImg, manufacturer, name, result, tes
       <div style={styles.content}>
         {isExpanded && (
           <div className="expandedResults">
-            <span className="validationTitle">Page Validation Results</span>
+            {baseImg && (
+                <span className="vTitle">Page Validation Results</span>
+              )}
             <div className="validationResults">
               {baseImg && (
+                <div>
                 <img className="baseImg" src={baseImg} alt="base Image" />
+                <span className="vTitle">Base Image</span>
+                </div>
               )}
 
-              {toCompareImg && (
-                <img
+              {toCompareImg!='None' && (
+                <div>
+                 <img
                   className="compareImg"
                   src={toCompareImg}
                   alt="compare Image"
                 />
+                <span className="vTitle">Compared Image</span>
+                </div>
               )}
             </div>
             <div className="testVideo">

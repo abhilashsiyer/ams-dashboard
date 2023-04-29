@@ -27,10 +27,10 @@ const TestResults = () => {
   if (!Array.isArray(testCases)) return null;
   if (testCases.length < 1) {
     return (
-      <div className="results">
-        <h1>
-          No search results.
-        </h1>
+      <div className="no-results">
+        <h3>
+          Test execution is still is progress... Please wait until execution is completed.
+        </h3>
       </div>
     );
   }
