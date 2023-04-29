@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router';
 import {useDispatch} from 'react-redux';
 import {signUpUserStart} from './../../redux/User/user.actions';
 import { useSelector } from "react-redux";
+import { changeLoadingStateStart } from '../../redux/Loader/loader.actions';
 
 const mapState = ({user}) =>({
   currentUser: user.currentUser,
@@ -49,6 +50,8 @@ const Signup = props => {
   const handleFormSubmit =  (e) => {
     e.preventDefault();
     dispatch(signUpUserStart({displayName,email,password, confirmPassword}));
+    let loaderState = true;
+    dispatch(changeLoadingStateStart(loaderState));
   }
 
   const configAuthWrapper = {

@@ -59,6 +59,8 @@ const SignIn = props => {
 
   const handleGoogleSignIn = () => {
     dispatch(googleSignInStart());
+    let loaderState = true;
+    dispatch(changeLoadingStateStart(loaderState));
   }
 
   const configAuthWrapper = {
