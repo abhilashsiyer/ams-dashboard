@@ -23,7 +23,8 @@ export const handleFetchResults = ({matriceId, appId}) => {
       const payload = {
         testMatrixId:fetchResult.matriceId, 
         testCaseName: fetchResult.testCaseName, 
-        historyId:fetchResult.appId
+        historyId:fetchResult.appId,
+        project:fetchResult.projectId
       }
 
       axiosReportingClient.post(`getResultsForTestCase`, payload).then((response)=>{

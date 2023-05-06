@@ -11,17 +11,12 @@ const mapState = ({projectsData}) =>({
 
 const mapUserState = ({user}) =>({
   currentUser: user.currentUser 
- }); 
-
- const mapFetchDoneState = ({projectsData}) =>({
-  fetchDoneS: projectsData.fetchDone 
  });
 
 const ProjectsCard = () => {
   const dispatch = useDispatch();
   const { projects } = useSelector(mapState);
   const { currentUser } = useSelector(mapUserState);
-  const { fetchDoneS } = useSelector(mapFetchDoneState);
   const memberId = currentUser.memberId;
 
   useEffect(() => {
@@ -30,24 +25,8 @@ const ProjectsCard = () => {
       fetchProjectsStart(memberId)
     )
 
-    console.log('** fetch Done', fetchDoneS )
-
-    let fetchState = false;
-
-    if (fetchDoneS){
-      let loaderState = false;
-      fetchState= true;
-      console.log('** fetch Done')
-      dispatch(changeLoadingStateStart(loaderState));
-    }
-
-    if (!fetchDoneS && !fetchState){
-      let loaderState = true;
-      console.log('** fetch on load')
-      dispatch(changeLoadingStateStart(loaderState));
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fetchDoneS]);
+  }, []);
   
   const handleSubmit = async (e) => {
     let loaderState = true;
@@ -55,7 +34,7 @@ const ProjectsCard = () => {
   };
 
   if (!Array.isArray(projects)) return null;
-  if (fetchDoneS && projects.length < 1) {
+  if (projects.length < 1) {
     return (
       <div className="projectCard">
         <h3>

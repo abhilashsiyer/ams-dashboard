@@ -1,7 +1,8 @@
 import projectTypes from './projects.types';
 import { handleFetchProjects } from './projects.helpers';
-import { setProjects, setProjectsDone } from './projects.actions';
+import { setProjects } from './projects.actions';
 import { takeLatest, put, all, call } from 'redux-saga/effects';
+import { changeLoadingStateStart } from './../Loader/loader.actions';
 
 
 export function* fetchProjects({payload}) {
@@ -10,12 +11,13 @@ export function* fetchProjects({payload}) {
       yield put(
         setProjects(projects)
       );
-      let fetchDone = true;
       yield put(
-        setProjectsDone(fetchDone)
+        changeLoadingStateStart(false)
       );
     } catch (err) {
-      console.log(err);
+      yield put(
+        changeLoadingStateStart(false)
+      );
     }
   }
   
