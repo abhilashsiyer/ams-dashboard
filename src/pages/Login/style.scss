@@ -1,7 +1,25 @@
 
 .homepage {
-    height: calc(100% - 6.5rem - 5.8rem);
+  width: 100%;
+  @media(min-width:768px) { 
+    width: 750px;
     h2,h3 {
       text-align: center;
   }
+  }
+  @media(min-width:1024px) { 
+    width: 970px;
+    h2,h3 {
+      text-align: center;
+  }
+  }
+  @media(min-width:1200px) { 
+    width: 1170px;
+    h2,h3 {
+      text-align: center;
+  }
+  }
+
+  height: calc(100% - 6.5rem - 5.8rem);
+    
   }

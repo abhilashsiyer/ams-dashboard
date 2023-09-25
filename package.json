@@ -20,6 +20,8 @@
     "redux-logger":"^3.0.6",
     "redux-saga":"^1.2.1",
     "video-react": "^0.16.0",
+    "styled-components": "6.0.8",
+    "react-responsive": "9.0.2",
     "axios":"^1.2.1"
   },
   "scripts": {

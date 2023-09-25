@@ -19,15 +19,20 @@
                 padding-right: 20px;
                 font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             }
+            
             .getStarted{
-                padding-left: 20px;
-                padding-right: 20px;
-                padding-bottom: 10px;
-                background: #7FDBFF;
-                text-align: center;
-                color: rgb(22, 21, 19);
-                border: 2px solid #7FDBFF;
-                border-radius: 50px;
+                @media(min-width:768px) { 
+                    width: 750px;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    padding-bottom: 10px;
+                    text-align: center;
+                  }
+                  background: #7FDBFF;
+                  color: rgb(22, 21, 19);
+                  border: 2px solid #7FDBFF;
+                  border-radius: 50px;
+                
             }
           }
           .logoutButton{
@@ -40,16 +45,21 @@
     }
 
     .logo {
-        width: 13.0rem;
-        position: absolute;
-        left: 10px;
+        @media(min-width:768px) { 
+            width: 750px;
+            left: 10px;
+          }
+        
     }
 
     img {
-        display: block;
-        height: 14.5rem;
-        width: 24.5rem;
-        padding-left: 10px;
+        @media(min-width:768px) { 
+            max-width: 100%;
+            height: auto;
+            padding-left: 10px;
+            display: block;
+          }
+        
         margin: 0;
     }
     h3 {

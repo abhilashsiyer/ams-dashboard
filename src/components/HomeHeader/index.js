@@ -28,10 +28,10 @@ const HomeHeader = props => {
     <header className="header">
       <div className="wrap">
         <div className="logo">
-          <Link to="/">
+          {/* <Link to="/">
             <img src={AMSLogo} alt="AMS logo" />
             <h3>Automation Made Simple</h3>
-          </Link>
+          </Link> */}
         </div>
         <div className="callToActions">
           {currentUser && (
