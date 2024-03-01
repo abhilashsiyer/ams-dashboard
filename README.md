@@ -1,3 +1,6 @@
+# AMS Dashboard
+React based project to showcase test results for test run on Firebase and show image difference.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
